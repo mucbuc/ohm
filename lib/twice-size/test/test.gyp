@@ -1,14 +1,13 @@
 {
 	'includes':[
-		'../ohm.gypi',
-		'lib/om636/om636.gypi'
+		'../twice-size.gypi',
+		'lib/om636/om636.gypi',
 	],#inclues
 	'target_defaults': {
 		'sources': [
+			'src/main.cpp',
 			'src/debug.h',
-			'src/emitter.cpp',
-			'src/emitter.h',
-			'src/emitter_fwd.h',
+			'src/test.h',
 		], #sources
 		'include_dirs': [
 			'../'
