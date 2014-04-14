@@ -1,7 +1,6 @@
 {
 	'includes':[
 		'../ohm.gypi',
-		'../lib/twice-size/twice-size.gypi'
 	],#inclues
 	'target_defaults': {
 		'sources': [
