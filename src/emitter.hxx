@@ -102,10 +102,7 @@ namespace om636
         {
             for_each( batch.begin(), batch.end(), [&](pointer_type p) {
                 if (!p->is_dead())
-                {
                     p->invoke(v);
-                    p->kill();
-                }
             } );
         }
         
@@ -116,10 +113,7 @@ namespace om636
         {
             for_each( batch.begin(), batch.end(), [&](pointer_type p) {
                 if (!p->is_dead())
-                {
                     p->invoke(v, w);
-                    p->kill();
-                }
             } );
         }
         
