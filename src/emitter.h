@@ -47,6 +47,14 @@ namespace om636
             typedef std::multiset< pointer_type > batch_type;
 			typedef std::map< event_type, batch_type > map_type;
 			
+            static void process_and_kill( const batch_type & );
+            
+            template<typename V>
+            static void process_and_kill( const batch_type &, V );
+            
+            template<typename V, typename W>
+            static void process_and_kill( const batch_type &, V, W );
+            
             static void process( const batch_type & );
             
             template<typename V>

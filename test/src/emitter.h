@@ -346,3 +346,25 @@ void check_once_while_emit()
 }
 
 
+void check_once_while_emit_recursive()
+{
+    using namespace std;
+    typedef om636::control::Emitter<> emitter_type;
+    
+    emitter_type emitter;
+    vector< typename emitter_type::listener_type > listeners;
+    
+    unsigned counter( 0 );
+    
+    listeners.push_back( emitter.once( "on", [&](){
+        ++counter;
+        emitter.emit( "on" );
+    }));
+                        
+    emitter.emit( "on" );
+                        
+    ASSERT( counter == 1 );
+
+    cout << __FUNCTION__ << " passed" << endl;
+}
+    

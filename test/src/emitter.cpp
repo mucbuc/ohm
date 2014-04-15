@@ -12,5 +12,6 @@ int main()
     check_on();
     check_on_while_emit();
     check_once_while_emit();
+    check_once_while_emit_recursive();
     return 0;
 }

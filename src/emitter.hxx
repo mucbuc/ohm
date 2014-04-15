@@ -46,9 +46,13 @@ namespace om636
 		void Emitter<T, U>::emit( event_type e)
 		{
             merge_batches();
-            const batch_type & batches( copy_batches( e ) );
-            process( batches );
+            
+            batch_type singles( m_once[e] );
+            process_and_kill( singles );
             m_once.erase(e);
+            
+            batch_type repeats( m_repeat[ e ] );
+            process( repeats );
         }
         
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -57,9 +61,13 @@ namespace om636
 		void Emitter<T, U>::emit( event_type e, V arg)
 		{
             merge_batches();
-            const batch_type & batches( copy_batches( e ) );
-            process( batches, arg );
+            
+            batch_type singles( m_once[e] );
+            process_and_kill( singles, arg );
             m_once.erase(e);
+            
+            batch_type repeats( m_repeat[ e ] );
+            process( repeats, arg );
         }
         
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -68,9 +76,13 @@ namespace om636
 		void Emitter<T, U>::emit( event_type e, V first_arg, W second_arg )
 		{
             merge_batches();
-            const batch_type & batches( copy_batches( e ) );
-            process( batches, first_arg, second_arg );
+            
+            batch_type singles( m_once[e] );
+            process_and_kill( singles, first_arg, second_arg );
             m_once.erase(e);
+            
+            batch_type repeats( m_repeat[ e ] );
+            process( repeats );
         }
         
         /////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +102,10 @@ namespace om636
         {
             for_each( batch.begin(), batch.end(), [&](pointer_type p) {
                 if (!p->is_dead())
+                {
                     p->invoke(v);
+                    p->kill();
+                }
             } );
         }
         
@@ -101,7 +116,42 @@ namespace om636
         {
             for_each( batch.begin(), batch.end(), [&](pointer_type p) {
                 if (!p->is_dead())
+                {
                     p->invoke(v, w);
+                    p->kill();
+                }
+            } );
+        }
+        
+        /////////////////////////////////////////////////////////////////////////////////////
+		template<typename T, typename U>
+        void Emitter<T, U>::process_and_kill( const batch_type & batch )
+        {
+            for_each( batch.begin(), batch.end(), [](pointer_type p) {
+                if (!p->is_dead())
+                    p->kill_invoke();
+            } );
+        }
+        
+        /////////////////////////////////////////////////////////////////////////////////////
+		template<typename T, typename U>
+        template<typename V>
+        void Emitter<T, U>::process_and_kill( const batch_type & batch, V v )
+        {
+            for_each( batch.begin(), batch.end(), [&](pointer_type p) {
+                if (!p->is_dead())
+                    p->kill_invoke(v);
+            } );
+        }
+        
+        /////////////////////////////////////////////////////////////////////////////////////
+		template<typename T, typename U>
+        template<typename V, typename W>
+        void Emitter<T, U>::process_and_kill( const batch_type & batch, V v, W w )
+        {
+            for_each( batch.begin(), batch.end(), [&](pointer_type p) {
+                if (!p->is_dead())
+                    p->kill_invoke(v, w);
             } );
         }
         
