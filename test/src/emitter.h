@@ -24,8 +24,10 @@ void check_emit_once()
         ++counter;
     } ) ); 
 
-    e.emit( "hello", 0 ); 
-    e.emit( "allo", 9 ); 
+    e.emit( "hello", 0 );
+    e.emit( "hello", 0 );
+    e.emit( "allo", 9 );
+    e.emit( "allo", 9 );
 
     ASSERT( counter == 2 );
 
@@ -266,3 +268,103 @@ void check_agent_life_time()
     
     cout << __FUNCTION__ << " passed" << endl;
 }
+
+void check_on()
+{
+    using namespace std;
+    typedef om636::control::Emitter< string > emitter_type;
+    
+    emitter_type emitter;
+    vector< typename emitter_type::listener_type > listeners;
+
+    unsigned counter( 0 );
+    
+    listeners.push_back( emitter.on( "on", [&](){
+        ++counter;
+    } ) );
+
+    emitter.emit( "on" );
+    emitter.emit( "on" );
+    emitter.emit( "on" );
+    emitter.emit( "on" );
+    
+    ASSERT( counter == 4 );
+    
+    cout << __FUNCTION__ << " passed" << endl;
+}
+
+void check_on_while_emit()
+{
+    using namespace std;
+    typedef om636::control::Emitter<> emitter_type;
+    
+    emitter_type emitter;
+    vector< typename emitter_type::listener_type > listeners;
+    
+    unsigned counter( 0 );
+    
+    listeners.push_back( emitter.once( "load", [&](){
+        listeners.push_back( emitter.on( "on", [&](){
+            ++counter;
+        } ) );
+        
+        emitter.emit( "on" );
+    } ) );
+    
+    emitter.emit( "load" );
+    emitter.emit( "on" );
+    
+    ASSERT( counter == 2 );
+    
+    cout << __FUNCTION__ << " passed" << endl;
+}
+
+void check_once_while_emit()
+{
+    using namespace std;
+    typedef om636::control::Emitter<> emitter_type;
+    
+    emitter_type emitter;
+    vector< typename emitter_type::listener_type > listeners;
+    
+    unsigned counter( 0 );
+    
+    listeners.push_back( emitter.once( "load", [&](){
+        listeners.push_back( emitter.once( "on", [&](){
+            ++counter;
+        } ) );
+        
+        emitter.emit( "on" );
+    } ) );
+    
+    emitter.emit( "load" );
+    emitter.emit( "on" );
+    
+    ASSERT( counter == 1 );
+    
+    cout << __FUNCTION__ << " passed" << endl;
+}
+
+
+void check_once_while_emit_recursive()
+{
+    using namespace std;
+    typedef om636::control::Emitter<> emitter_type;
+    
+    emitter_type emitter;
+    vector< typename emitter_type::listener_type > listeners;
+    
+    unsigned counter( 0 );
+    
+    listeners.push_back( emitter.once( "on", [&](){
+        ++counter;
+        emitter.emit( "on" );
+    }));
+                        
+    emitter.emit( "on" );
+                        
+    ASSERT( counter == 1 );
+
+    cout << __FUNCTION__ << " passed" << endl;
+}
+    

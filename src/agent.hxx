@@ -37,6 +37,39 @@ namespace om636
 		
 		/////////////////////////////////////////////////////////////////////////////////////
 		template<typename T>
+		void Agent<T>::kill_invoke()
+		{
+			ASSERT( !is_dead() );
+			callback_type temp( m_callback ); 
+			kill();
+			temp();
+		}
+        
+		/////////////////////////////////////////////////////////////////////////////////////
+		template<typename T>
+        template<typename V>
+        void Agent<T>::kill_invoke( V v )
+		{
+			ASSERT( !is_dead() );
+			callback_type temp( m_callback );
+			kill();
+			temp( v );
+		}
+        
+		/////////////////////////////////////////////////////////////////////////////////////
+		template<typename T>
+		template<typename V, typename W>
+        void Agent<T>::kill_invoke( V v, W w)
+		{
+			ASSERT( !is_dead() );
+			callback_type temp( m_callback );
+			kill();
+			temp( v, w );
+		
+		}
+		
+		/////////////////////////////////////////////////////////////////////////////////////
+		template<typename T>
 		void Agent<T>::kill()
 		{
 			m_callback = callback_type();

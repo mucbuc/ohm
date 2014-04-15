@@ -9,5 +9,9 @@ int main()
     check_emit_while_emit();
     check_emit_with_args();
     check_emit_once();
+    check_on();
+    check_on_while_emit();
+    check_once_while_emit();
+    check_once_while_emit_recursive();
     return 0;
 }

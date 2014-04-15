@@ -20,7 +20,15 @@ namespace om636
 			void invoke(V);
             
             template<typename V, typename W>
-            void invoke(V, W);
+            void invoke(V, W); 
+
+			void kill_invoke();
+           
+            template<class V>
+			void kill_invoke(V);
+            
+            template<typename V, typename W>
+            void kill_invoke(V, W);
             
 			void kill();
 			bool is_dead();
