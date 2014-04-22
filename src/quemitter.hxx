@@ -6,7 +6,7 @@ namespace om636
         template<typename T, typename U>
         void Quemitter<T, U>::emit( event_type e)
         {
-            function_type p( [&]() {
+            function_type p( [e, this]() {
                 base_type::emit( e );
             } ); 
 
@@ -18,7 +18,7 @@ namespace om636
         template<class V> 
         void Quemitter<T, U>::emit( event_type e, V v )
         {
-            function_type p( [&]() {
+            function_type p( [e, v, this]() {
                 base_type::emit( e, v );
             } ); 
 
@@ -30,7 +30,7 @@ namespace om636
         template<typename V, typename W> 
         void Quemitter<T, U>::emit( event_type e, V v, W w )
         {
-            function_type p( [&]() {
+            function_type p( [e, v, w, this]() {
                 base_type::emit( e, v, w );
             } ); 
 
