@@ -5,15 +5,17 @@
 
 #include "debug.h"
 
+#define FOOTER cout << __FUNCTION__ << " passed" << endl
+
+using namespace std;
+using namespace om636;
+
+template< template<class, class> class T>
 void check_emit_once()
 {
-    using namespace std;
-    using namespace om636;
-    typedef function<void(int)> function_type;
-    typedef control::Emitter< string, function_type > emitter_type;
-    typedef typename emitter_type::listener_type listener_type;
-    
+    typedef T< string, function<void(int)> > emitter_type; 
     emitter_type e;
+    
     unsigned counter( 0 ); 
 
     auto l( e.once( "hello", [&](int){
@@ -31,18 +33,16 @@ void check_emit_once()
 
     ASSERT( counter == 2 );
 
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
+template< template<class, class> class T>
 void check_emit_with_args()
 {
-    using namespace std;
-    using namespace om636;
-    typedef function<void(int)> function_type;
-    typedef control::Emitter< string, function_type > emitter_type;
+    typedef T< string, function<void(int)> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
-    
     emitter_type e;
+    
     bool test_passed(0);
     string event("e");
     
@@ -55,15 +55,13 @@ void check_emit_with_args()
     
     ASSERT( test_passed );
 
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
+template< template<class, class> class T>
 void check_emit_while_emit()
 {
-    using namespace std;
-    using namespace om636;
-    typedef function<void()> function_type;
-    typedef control::Quemitter< string, function_type > emitter_type;
+    typedef T< string, function<void()>  > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     size_t counter(0);
@@ -79,18 +77,19 @@ void check_emit_while_emit()
 
     ASSERT( counter == 1 );
 
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
 /////////////////////////////////////////////////////////////////
+template< template<class, class> class T>
 void check_modify_while_traversal()
 {
-    using namespace std;
-    typedef om636::control::Emitter<> emitter_type;
-
+    typedef T< string, function<void()>  > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+    
     static emitter_type emitter;
     static unsigned trap( 0 );
-    static string event( "load" );
+    static const string event( "load" );
     struct tester
     {
         static void trigger_trap()
@@ -111,7 +110,7 @@ void check_modify_while_traversal()
         }
     };
     
-    vector< typename emitter_type::listener_type > listeners;
+    vector< listener_type > listeners;
 
     // test remove while traverse
     listeners.push_back( emitter.on( event, tester::remove ) );
@@ -141,12 +140,16 @@ void check_modify_while_traversal()
     emitter.emit( event );
     ASSERT( trap == 5 );
     
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
 /////////////////////////////////////////////////////////////////
+template< template<class, class> class T>
 void check_dispatch_logic()
 {
+    typedef T< string, function<void()> > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
     static unsigned trap( 0 );
     struct tester
     {
@@ -156,11 +159,8 @@ void check_dispatch_logic()
         }
     };
     
-    using namespace std;
-    typedef om636::control::Emitter<> emitter_type;
-    
     emitter_type emitter;
-    vector< typename emitter_type::listener_type > listeners;
+    vector< listener_type > listeners;
     string event( "calculate answer to L.U. and E." );
     
     trap = 0;
@@ -189,10 +189,11 @@ void check_dispatch_logic()
     emitter.emit( event );
     ASSERT( trap == 5 );
     
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
 /////////////////////////////////////////////////////////////////
+template< template<class, class> class T> 
 void check_agent_life_time()
 {
     struct dummy_callback
@@ -220,9 +221,9 @@ void check_agent_life_time()
         }
     };
     
-    using namespace std;
-    typedef om636::control::Emitter< string, dummy_callback > emitter_type;
-    
+    typedef T< string, dummy_callback > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
     static string event( "init" );
     emitter_type emitter;
     
@@ -248,7 +249,7 @@ void check_agent_life_time()
 
     if (1)
     {
-        emitter_type::listener_type listener;
+        listener_type listener;
         if(1)
         {
             auto temp( emitter.on( event, dummy_callback() ) );
@@ -266,16 +267,17 @@ void check_agent_life_time()
     emitter.removeListeners( event );
     ASSERT( !dummy_callback::instance_counter() );
     
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
+template< template<class, class> class T>
 void check_on()
 {
-    using namespace std;
-    typedef om636::control::Emitter< string > emitter_type;
-    
+    typedef T< string, function<void()> > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
     emitter_type emitter;
-    vector< typename emitter_type::listener_type > listeners;
+    vector< listener_type > listeners;
 
     unsigned counter( 0 );
     
@@ -290,16 +292,17 @@ void check_on()
     
     ASSERT( counter == 4 );
     
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
+template< template<class, class> class T>
 void check_on_while_emit()
 {
-    using namespace std;
-    typedef om636::control::Emitter<> emitter_type;
-    
+    typedef T< string, function<void()>  > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
     emitter_type emitter;
-    vector< typename emitter_type::listener_type > listeners;
+    vector< listener_type > listeners;
     
     unsigned counter( 0 );
     
@@ -316,16 +319,17 @@ void check_on_while_emit()
     
     ASSERT( counter == 2 );
     
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
+template< template<class, class> class T>
 void check_once_while_emit()
 {
-    using namespace std;
-    typedef om636::control::Emitter<> emitter_type;
-    
+    typedef T< string, function<void()>  > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
     emitter_type emitter;
-    vector< typename emitter_type::listener_type > listeners;
+    vector< listener_type > listeners;
     
     unsigned counter( 0 );
     
@@ -342,17 +346,17 @@ void check_once_while_emit()
     
     ASSERT( counter == 1 );
     
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
 
-
+template< template<class, class> class T>
 void check_once_while_emit_recursive()
-{
-    using namespace std;
-    typedef om636::control::Emitter<> emitter_type;
-    
+{    
+    typedef T< string, function<void()>  > emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
     emitter_type emitter;
-    vector< typename emitter_type::listener_type > listeners;
+    vector< listener_type > listeners;
     
     unsigned counter( 0 );
     
@@ -365,6 +369,5 @@ void check_once_while_emit_recursive()
                         
     ASSERT( counter == 1 );
 
-    cout << __FUNCTION__ << " passed" << endl;
+    FOOTER;
 }
-    
