@@ -1,11 +1,9 @@
 {
 	'includes':[
-		'lib/twice-size/twice-size.gypi'
+		'lib/twice-size/twice-size.gypi',
+		'plank/def/cpp11.gypi'
 	],
 	'target_defaults': {
-		'include_dirs': [
-			'.'
-		], #include_dirs	
 		'sources': [
 			'src/agent.h',
 			'src/agent.hxx',
@@ -16,7 +14,5 @@
 			'src/quemitter.h',
 			'src/quemitter.hxx'
 		],
-		'cflags': [ '-std=c++11', '-stdlib=libc++' ],
-		'ldflags': [ '-stdlib=libc++' ],
 	}
 }

@@ -1,3 +1,5 @@
+#include "test.h"
+
 #include "emitter_fwd.h"
 #include "emitter.h"
 
