@@ -1,7 +1,7 @@
 {
 	'includes':[
-		'lib/twice-size/twice-size.gypi',
-		'plank/def/cpp11.gypi'
+		'../twice-size/twice-size.gypi',
+		'../../plank/def/cpp11.gypi'
 	],
 	'target_defaults': {
 		'sources': [
