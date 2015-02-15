@@ -7,9 +7,9 @@
 		'target_name': 'test',
 		'type': 'executable',
 		'sources': [
-			'../test/src/emitter.cpp',
-			'../test/src/emitter.h',
-			'../test/src/emitter_fwd.h',
+			'src/emitter.cpp',
+			'src/emitter.h',
+			'src/emitter_fwd.h',
 		], #sources
 		'include_dirs': [
 			'plank/src/',
