@@ -82,7 +82,7 @@ namespace om636
             m_once.erase(e);
             
             batch_type repeats( m_repeat[ e ] );
-            process( repeats );
+            process( repeats, first_arg, second_arg );
         }
         
         /////////////////////////////////////////////////////////////////////////////////////
