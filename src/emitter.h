@@ -5,7 +5,7 @@
 #include <memory>
 #include <set>
 
-#include <lib/dynamo/dynamo.h>
+#include <lib/dynamo/src/batch.h>
 
 namespace om636
 {
@@ -18,10 +18,10 @@ namespace om636
 
 		    typedef T event_type;
 			typedef U callback_type;
-
 			typedef Batch< callback_type > batch_type;
-            typedef std::shared_ptr< agent_type > pointer_type;
-            typedef Listener< pointer_type > listener_type;
+            typedef typename batch_type::listener_type listener_type;
+            typedef typename batch_type::agent_type agent_type;
+            typedef typename batch_type::pointer_type pointer_type;
 
 			Emitter() = default;
 			virtual ~Emitter() = default;
@@ -45,14 +45,8 @@ namespace om636
 		private:
 
             typedef std::map< event_type, batch_type > map_type;
+            void kill_all(map_type &);
 			
-            batch_type copy_batches(event_type);
-            void merge_batches();
-            
-            static void merge_maps(map_type &, map_type &);
-            static void kill_all(batch_type &);
-            static void kill_all(map_type &);
-            
 			map_type m_repeat;
             map_type m_once;
 		};

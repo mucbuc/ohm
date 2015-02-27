@@ -1,6 +1,7 @@
 {
 	'includes':[
 		'lib/ohm/ohm.gypi',
+		'lib/dynamo/def.gypi',
 		'plank/def/mac-targets.gypi'
 	],#inclues
 	'target_defaults': {
