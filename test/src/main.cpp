@@ -9,6 +9,10 @@
 
 int main(int argc, const char * argv[])
 {
-	check_traverse();
+    check_traverse();
+	check_traverse_while_traverse();
+	check_traverse_with_arg();
+	check_traverse_with_args();
+
 	return 0;
 }
