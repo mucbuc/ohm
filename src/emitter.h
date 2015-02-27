@@ -5,8 +5,7 @@
 #include <memory>
 #include <set>
 
-#include "agent.h"
-#include "listener.h"
+#include <lib/dynamo/dynamo.h>
 
 namespace om636
 {
@@ -19,7 +18,8 @@ namespace om636
 
 		    typedef T event_type;
 			typedef U callback_type;
-			typedef Agent< callback_type > agent_type;
+
+			typedef Batch< callback_type > batch_type;
             typedef std::shared_ptr< agent_type > pointer_type;
             typedef Listener< pointer_type > listener_type;
 
@@ -44,25 +44,8 @@ namespace om636
             
 		private:
 
-            typedef std::multiset< pointer_type > batch_type;
-			typedef std::map< event_type, batch_type > map_type;
+            typedef std::map< event_type, batch_type > map_type;
 			
-            static void process_and_kill( const batch_type & );
-            
-            template<typename V>
-            static void process_and_kill( const batch_type &, V );
-            
-            template<typename V, typename W>
-            static void process_and_kill( const batch_type &, V, W );
-            
-            static void process( const batch_type & );
-            
-            template<typename V>
-            static void process( const batch_type &, V );
-            
-            template<typename V, typename W>
-            static void process( const batch_type &, V, W );
-            
             batch_type copy_batches(event_type);
             void merge_batches();
             
@@ -71,9 +54,7 @@ namespace om636
             static void kill_all(map_type &);
             
 			map_type m_repeat;
-            map_type m_repeat_add;
-			map_type m_once;
-			map_type m_once_add;
+            map_type m_once;
 		};
 	}	//control
 }	// om636
