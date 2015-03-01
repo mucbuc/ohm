@@ -37,8 +37,11 @@ namespace om636
 		template<typename T, typename U>
 		void Emitter<T, U>::emit( event_type e)
 		{ 
-            m_once[e].traverse_destructive();
-            m_repeat[e].traverse();
+            m_once[e].merge_added_elements();
+            m_repeat[e].merge_added_elements();
+
+            utils::process_and_kill(m_once[e].elements());
+            utils::process(m_repeat[e].elements());
         }
         
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -46,17 +49,23 @@ namespace om636
 		template<class V>
 		void Emitter<T, U>::emit( event_type e, V arg)
 		{ 
-            m_once[e].traverse_destructive(arg);
-            m_repeat[e].traverse(arg);
+            m_once[e].merge_added_elements();
+            m_repeat[e].merge_added_elements();
+
+            utils::process_and_kill(m_once[e].elements(), arg);
+            utils::process(m_repeat[e].elements(), arg);
         }
         
 		/////////////////////////////////////////////////////////////////////////////////////
 		template<typename T, typename U>
 		template<typename V, typename W>
 		void Emitter<T, U>::emit( event_type e, V first_arg, W second_arg )
-		{ 
-            m_once[e].traverse_destructive(first_arg, second_arg);
-            m_repeat[e].traverse(first_arg, second_arg);
+		{   
+			m_once[e].merge_added_elements();
+            m_repeat[e].merge_added_elements();
+
+            utils::process_and_kill(m_once[e].elements(), first_arg, second_arg);
+            utils::process(m_repeat[e].elements(), first_arg, second_arg);
         }
         
         /////////////////////////////////////////////////////////////////////////////////////
