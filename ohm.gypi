@@ -1,18 +1,18 @@
 {
 	'includes':[
 		'../twice-size/twice-size.gypi',
-		'../../plank/def/cpp11.gypi'
+		'../dynamo/def.gypi'
 	],
 	'target_defaults': {
 		'sources': [
-			'src/agent.h',
-			'src/agent.hxx',
-			'src/emitter.h',
-			'src/emitter.hxx',
-			'src/listener.h',
-			'src/listener.hxx',
-			'src/quemitter.h',
-			'src/quemitter.hxx'
+			'../agent.h',
+			'../agent.hxx',
+			'../emitter.h',
+			'../emitter.hxx',
+			'../listener.h',
+			'../listener.hxx',
+			'../quemitter.h',
+			'../quemitter.hxx'
 		],
 	}
 }
