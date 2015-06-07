@@ -36,7 +36,13 @@ else {
 }
 
 emitter.on( 'run', function( o ) {
-  logic.run( o ); 
+  logic.run( o )
+  .then(function(){
+    console.log( 'ok' );
+  })
+  .catch(function(){
+    console.log( 'failed' );
+  }); 
 }); 
 
 emitter.on( 'build', function( o ) {

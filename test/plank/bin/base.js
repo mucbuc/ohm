@@ -92,7 +92,7 @@ function Base(program) {
       }
 
       child.on( 'close', function( code ) {
-        o['targetName'] = targetName;
+        o['target'] = targetName;
         o['exitCode'] = code;
         cb( o ); 
       } );
@@ -118,29 +118,34 @@ function Base(program) {
   };
 
   this.run = function( o, cb ) {
-    
+    console.log( '** run' );
     var execPath;
     if (program.gcc) {
       o.testDir = path.join( o.testDir, 'out' );
     }
+    console.log( '*** run', o );
     execPath = path.join( o.testDir, 'Default', o.target );
     console.log( execPath );
     
+
+    console.log( '**** run' );
     cp.spawn( 
       execPath, 
       [ 'http://localhost:3000' ], {
-      stdio: 'pipe'
+      stdio: 'inherit'// pipe'
+    })
+    .on( 'error', function( error ) {
     })
     .on( 'close', function( code ) {
       cb( code );
       //server.kill();
     })
-    .stdout.on( 'data', function( data ) {
-      cursor.blue();
-      process.stdout.write( o.defFile + ': ' ); 
-      cursor.reset();
-      console.log( data.toString() );
-    });
+    // .stdout.on( 'data', function( data ) {
+    //   cursor.blue();
+    //   process.stdout.write( o.defFile + ': ' ); 
+    //   cursor.reset();
+    //   console.log( data.toString() );
+    // });
   };
 }
 
