@@ -45,6 +45,7 @@ emitter.emit( 'traverse', program.path );
 function attachLogic(emitter) {
 
 	emitter.on( 'run', function( o ) {
+		console.log( 'run attachLogic', o ); 
 		logic.run( o );
 	}); 
 
@@ -52,11 +53,15 @@ function attachLogic(emitter) {
 		logic
 		.build( defFile, testDir )
 		.then( function(exitCode, targetName, buildDir) {
+			console.log( 'build complete' );
 			emitter.emit( 'run', { 
 				defFile: defFile, 
 				buildDir: buildDir, 
 				targetName: targetName
 			} );
+		})
+		.catch( function() {
+			console.log( 'build failed' );
 		});
 	});
 

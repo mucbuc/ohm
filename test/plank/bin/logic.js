@@ -42,7 +42,9 @@ function Logic(base) {
 	};
 
 	this.run = function(o) {
+		console.log( "outside logic run" );
 		return new Promise(function(resolve, reject) {
+				console.log( "logic run" );
 				Printer.begin( defFile, 'run' );
 				base.run( o, function(exitCode) {
 					if (!exitCode) {
