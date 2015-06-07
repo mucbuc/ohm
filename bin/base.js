@@ -118,34 +118,29 @@ function Base(program) {
   };
 
   this.run = function( o, cb ) {
-    console.log( '** run' );
     var execPath;
     if (program.gcc) {
       o.testDir = path.join( o.testDir, 'out' );
     }
-    console.log( '*** run', o );
     execPath = path.join( o.buildDir, 'Default', o.target );
-    console.log( execPath );
-    
 
-    console.log( '**** run' );
     cp.spawn( 
       execPath, 
       [ 'http://localhost:3000' ], {
-      stdio: 'inherit'// pipe'
+      stdio: 'pipe'
     })
     .on( 'error', function( error ) {
     })
     .on( 'close', function( code ) {
       cb( code );
-      //server.kill();
+      server.kill();
     })
-    // .stdout.on( 'data', function( data ) {
-    //   cursor.blue();
-    //   process.stdout.write( o.defFile + ': ' ); 
-    //   cursor.reset();
-    //   console.log( data.toString() );
-    // });
+    .stdout.on( 'data', function( data ) {
+      cursor.blue();
+      process.stdout.write( o.defFile + ': ' ); 
+      cursor.reset();
+      console.log( data.toString() );
+    });
   };
 }
 

@@ -15,7 +15,6 @@ function Logic(base) {
             Printer.cursor.red();
             process.stdout.write( 'invalid test definition path: ');
             Printer.cursor.reset();
-            console.log( o.testDir ); 
             reject();
           }
         });
@@ -64,13 +63,13 @@ function Logic(base) {
       base.run( o, function(exitCode) {
         if (!exitCode) {
           Printer.finishGreen( o.defFile );
-          console.log( '=> ' + o.targetName + ' passed' );
+          console.log( '=> ' + o.target + ' passed' );
           o['exitCode'] = exitCode;
           resolve(o);
         }
         else {
           Printer.finishRed( o.defFile ) ; 
-          console.log( '=> ' + o.targetName + ' failed with exit code:', exitCode );
+          console.log( '=> ' + o.target + ' failed with exit code:', exitCode );
           reject(o);
         }
       });
