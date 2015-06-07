@@ -41,18 +41,18 @@ function Logic(base) {
 			});
 	};
 
-	this.run = function(defFile, testdir, targetName) {
+	this.run = function(o) {
 		return new Promise(function(resolve, reject) {
 				Printer.begin( defFile, 'run' );
-				base.run( defFile, testDir, targetName, function(exitCode) {
+				base.run( o, function(exitCode) {
 					if (!exitCode) {
-						Printer.finishGreen( defFile );
-						console.log( '=> ' + targetName + ' passed' );
+						Printer.finishGreen( o.defFile );
+						console.log( '=> ' + o.targetName + ' passed' );
 						resolve(exitCode);
 					}
 					else {
-						Printer.finishRed( defFile ) ; 
-						console.log( '=> ' + targetName + ' failed with exit code:', exitCode );
+						Printer.finishRed( o.defFile ) ; 
+						console.log( '=> ' + o.targetName + ' failed with exit code:', exitCode );
 						reject(exitCode);
 					}
 				});

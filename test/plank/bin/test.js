@@ -46,7 +46,7 @@ function attachLogic(emitter) {
 
 	emitter.on( 'run', function( o ) {
 		logic
-		.run( o.defFile, o.testdir, o.targetName );
+		.run( o );
 	}); 
 
 	emitter.on( 'build', function( defFile, testDir ) {
