@@ -45,15 +45,18 @@ emitter.emit( 'traverse', program.path );
 function attachLogic(emitter) {
 
 	emitter.on( 'run', function( o ) {
-		logic
-		.run( o );
+		logic.run( o );
 	}); 
 
 	emitter.on( 'build', function( defFile, testDir ) {
 		logic
 		.build( defFile, testDir )
 		.then( function(exitCode, targetName, buildDir) {
-			emitter.emit( 'run', defFile, buildDir, targetName );
+			emitter.emit( 'run', { 
+				defFile: defFile, 
+				buildDir: buildDir, 
+				targetName: targetName
+			} );
 		});
 	});
 
