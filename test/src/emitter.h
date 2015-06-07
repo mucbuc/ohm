@@ -1,4 +1,4 @@
-//#include "test.h"
+#include "test.h"
 
 #include <iostream>
 #include <vector>
@@ -6,7 +6,6 @@
 #include <lib/ohm/src/emitter.h>
 #include <lib/ohm/src/quemitter.h>
 
-#define FOOTER cout << __FUNCTION__ << " passed" << endl
 
 using namespace std;
 using namespace om636;
