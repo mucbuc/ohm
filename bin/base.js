@@ -124,7 +124,7 @@ function Base(program) {
       o.testDir = path.join( o.testDir, 'out' );
     }
     console.log( '*** run', o );
-    execPath = path.join( o.testDir, 'Default', o.target );
+    execPath = path.join( o.buildDir, 'Default', o.target );
     console.log( execPath );
     
 
