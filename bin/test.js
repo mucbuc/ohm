@@ -7,7 +7,6 @@ var assert = require( 'assert' )
   , emitter = new events.EventEmitter
   , program = require( 'commander' )
   , Base = require( './base' )
-  , Printer = require( './printer' )
   , Logic = require( './logic' )
   , base
   , logic;
@@ -22,27 +21,21 @@ program
   .parse( process.argv );
 
 if (!program.path) {
-  program.path = path.join( __dirname, '../..' );
+  program.path = process.cwd();
 }
 else {
-  program.path = path.join( __dirname, '../..', program.path );
+  program.path = path.join( process.cwd(), program.path );
 }
 
 if (!program.output) {
-  program.output = path.join( __dirname, '../..', 'build' );
+  program.output = path.join( process.cwd(), 'build' );
 }
 else {
-  program.output = path.join( __dirname, '../..', program.output );
+  program.output = path.join( process.cwd(), program.output );
 }
 
 emitter.on( 'run', function( o ) {
-  logic.run( o )
-  .then(function(){
-    console.log( 'ok' );
-  })
-  .catch(function(){
-    console.log( 'failed' );
-  }); 
+  logic.run( o ); 
 }); 
 
 emitter.on( 'build', function( o ) {
