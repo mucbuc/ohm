@@ -116,6 +116,8 @@ function Base(program) {
 
     this.run = function( o, cb ) {
     
+        console.log( 'base run', o );
+
         var execPath;
         if (program.gcc) {
             o.testDir = path.join( o.testDir, 'out' );
