@@ -114,13 +114,13 @@ function Base(program) {
         }
     };
 
-    this.run = function( defFile, testDir, target, cb ) {
+    this.run = function( o, cb ) {
     
         var execPath;
         if (program.gcc) {
-            testDir = path.join( testDir, 'out' );
+            o.testDir = path.join( o.testDir, 'out' );
         }
-        execPath = path.join( testDir, 'Default', target );
+        execPath = path.join( o.testDir, 'Default', o.target );
         console.log( execPath );
         
         cp.spawn( 
@@ -134,7 +134,7 @@ function Base(program) {
         })
         .stdout.on( 'data', function( data ) {
             cursor.blue();
-            process.stdout.write( defFile + ': ' ); 
+            process.stdout.write( o.defFile + ': ' ); 
             cursor.reset();
             console.log( data.toString() );
         });
