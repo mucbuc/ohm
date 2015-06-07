@@ -3,7 +3,8 @@ var assert = require( 'assert' )
   , path = require( 'path' )
   , cp = require( 'child_process' )
   , copy = require( 'fs-extra' ).copy
-  , fs = require( 'graceful-fs' );
+  , fs = require( 'graceful-fs' )
+  , Printer = require( './printer' );
 
 assert( typeof copy === 'function' );
 
@@ -11,15 +12,13 @@ function Base(program) {
 
   this.generate = function( o, cb ) {
 
-    var buildDir = program.output;
-
-    makePathIfNone(buildDir, function() {
+    makePathIfNone(program.output, function() {
 
       var include = program.gcc ? 'plank/def/cpp11-gcc.gypi' : 'plank/def/cpp11.gypi';
       var args = [
           o.defFile,
           '--depth=' + (program.gcc ? './' : '.'),
-          '--generator-output=' + buildDir,
+          '--generator-output=' + program.output,
           '--include=' + include  
         ];
 
@@ -36,7 +35,7 @@ function Base(program) {
           cwd: o.defDir
         })
       .on( 'close', function( code ) {
-        cb( code, buildDir );
+        cb( code, program.output );
       });
     });
 
@@ -63,7 +62,7 @@ function Base(program) {
   this.build = function( o, cb ) {
     
     readTargetName( o.defFile, program.path, function( targetName ) { 
-      console.log( o.buildDir );
+
       var child; 
       if (program.gcc) {
         child = cp.spawn(
@@ -71,22 +70,22 @@ function Base(program) {
           [ '-j'],
           {
             stdio: 'inherit',
-            cwd: o.buildDir
+            cwd: program.output
           }); 
       }
       else {
 
         var args = [
           "-project",
-          path.join( o.buildDir, targetName + '.xcodeproj' )
+          path.join( program.output, targetName + '.xcodeproj' )
         ];
 
-        console.log( args, o.buildDir ); 
+        console.log( args ); 
 
         child = cp.spawn( 
           'xcodebuild', 
           args, {
-            cwd: o.buildDir,
+            cwd: program.output,
             stdio: 'inherit'
           } ); 
       }
@@ -102,9 +101,9 @@ function Base(program) {
       var defPath = path.join( testDir, defFile );
       fs.readFile( defPath, function( err, data ) {
         if (err) {
-          cursor.red();
+          Printer.cursor.red();
           process.stdout.write( defFile + ': ' );
-          cursor.reset();
+          Printer.cursor.reset();
           console.log( err );
         }
         else {
@@ -122,7 +121,7 @@ function Base(program) {
     if (program.gcc) {
       o.testDir = path.join( o.testDir, 'out' );
     }
-    execPath = path.join( o.buildDir, 'Default', o.target );
+    execPath = path.join( program.output, 'Default', o.target );
 
     cp.spawn( 
       execPath, 
@@ -130,15 +129,16 @@ function Base(program) {
       stdio: 'pipe'
     })
     .on( 'error', function( error ) {
+      console.log( error );
     })
     .on( 'close', function( code ) {
       cb( code );
-      server.kill();
+      //server.kill();
     })
     .stdout.on( 'data', function( data ) {
-      cursor.blue();
+      Printer.cursor.blue();
       process.stdout.write( o.defFile + ': ' ); 
-      cursor.reset();
+      Printer.cursor.reset();
       console.log( data.toString() );
     });
   };
