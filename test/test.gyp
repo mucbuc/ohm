@@ -2,8 +2,9 @@
 	'includes':[
 		'lib/ohm/ohm.gypi',
 		'lib/dynamo/def.gypi',
+		'plank/def/cpp11.gypi',
 		'plank/def/mac-targets.gypi',
-		'plank/def/cpp11.gypi'
+		'plank/plank.gypi',
 	],#inclues
 	'target_defaults': {
 		'target_name': 'test',
