@@ -14,5 +14,5 @@
 			'plank/src/', 
 			'.' 
 		] #include_dirs
-	} #target_defaults
+	} #target_defaults	
 }
