@@ -120,10 +120,10 @@ function Base(program) {
     var execPath;
     if (program.gcc) {
       o.testDir = path.join( o.testDir, 'out' );
-      execPath = path.join( program.output, 'out/Test', o.target );
+      execPath = path.join( program.output, 'out/Default', o.target );
     }
     else 
-      execPath = path.join( program.output, 'Test', o.target );
+      execPath = path.join( program.output, 'Default', o.target );
 
     cp.spawn( 
       execPath, 
