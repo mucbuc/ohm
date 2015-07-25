@@ -13,7 +13,7 @@ function libName( dependency ) {
 }
 
 function readOutputDir() {
-	return m_.hasOwnProperty('outputDir') ? m_.outputDir : 'test';
+	return m_.hasOwnProperty('outputDir') ? m_.outputDir : '';
 }
 
 module.exports.readDependencies = readDependencies;

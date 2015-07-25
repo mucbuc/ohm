@@ -3,17 +3,19 @@
 var assert = require( 'assert' )
   , events = require( 'events' )
   , cp = require( 'child_process' )
+  , fs = require( 'fs' )
   , emitter = new events.EventEmitter()
-  , Reader = require( './Reader' )
   , program = require( 'commander' )
-  , join = require( 'path' ).join; 
+  , join = require( 'path' ).join
+  , config = require( './config' )
+  , LIB_PATH = 'lib';
 
 program
 	.version( '0.0.0' )
 	.option( '-p, --prefix [path]', 'output path' )
 	.parse( process.argv )
 
-installDependencies( Reader.readDependencies() );
+installDependencies( config.readDependencies() );
 
 function installDependencies( dependencies, index ) {
 	
@@ -22,9 +24,15 @@ function installDependencies( dependencies, index ) {
 
 	if (index < dependencies.length)
 	{
+
+		fs.mkdirSync( LIB_PATH );
+
 		var dependency = dependencies[ index ]
-	      , name = Reader.libName( dependency )
-	      , child = cp.spawn( 'git', [ 
+	      , name = config.libName( dependency )
+	      , destination = config.getOutputDir(index)
+	      , child = cp.spawn( 'git', [
+	      		'-C',
+				LIB_PATH,
 				'clone',
 				'--depth=1',
 				dependency,
@@ -39,7 +47,12 @@ function installDependencies( dependencies, index ) {
 
 		child.on( 'exit', function( code ) {
 			if (!code) {
-				console.log( 'repo cloned: ', name );
+				fs.appendFile( '.gitignore', LIB_PATH + '/\n', function(err){
+					if (!err)
+						console.log( 'repo cloned: ', name );
+					else 
+						console.log( 'error: sub repo ignore failed: ', err );
+				});
 			}
 			else { 
 				console.log( 'repo clone failed: ', name );
