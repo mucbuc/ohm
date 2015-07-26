@@ -1,0 +1,16 @@
+{
+	"dependencies": [
+		{ 
+			"origin": "https://github.com/mucbuc/traverse.git",
+			"path": "test/lib"
+		},
+		{ 
+			"origin": "https://github.com/mucbuc/dynamo.git",
+			"path": "test/lib"
+		},
+		{ 
+			"origin": "https://github.com/mucbuc/twice_size.git",
+			"path": "test/lib"
+		}
+	]
+}
