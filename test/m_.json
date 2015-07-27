@@ -1,6 +1,0 @@
-{
-	"dependencies": [
-		"https://github.com/mucbuc/dynamo.git",
-		"https://github.com/mucbuc/twice-size.git"
-	]
-}
