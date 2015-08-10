@@ -3,7 +3,7 @@
 		'lib/ohm/ohm.gypi',
 		'lib/dynamo/def.gypi',
 		'plank/def/mac-targets.gypi',
-		'plank/plank.gypi',
+		'plank/def/plank.gypi',
 	],#inclues
 	'target_defaults': {
 		'target_name': 'test',
