@@ -1,7 +1,6 @@
 {
 	'includes':[
 		'lib/ohm/ohm.gypi',
-		'lib/dynamo/def.gypi',
 		'plank/def/mac-targets.gypi',
 		'plank/def/plank.gypi',
 	],#inclues
