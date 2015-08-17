@@ -5,10 +5,10 @@
 	],
 	'target_defaults': {
 		'sources': [
-			'../emitter.h',
-			'../emitter.hxx',
-			'../quemitter.h',
-			'../quemitter.hxx',
+			'src/emitter.h',
+			'src/emitter.hxx',
+			'src/quemitter.h',
+			'src/quemitter.hxx',
 		],
 	}
 }
