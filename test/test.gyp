@@ -1,7 +1,6 @@
 {
 	'includes':[
 		'lib/ohm/ohm.gypi',
-		'plank/def/plank.gypi',
 	],#inclues
 	'target_defaults': {
 		'target_name': 'test',
@@ -12,7 +11,6 @@
 			'src/emitter_fwd.h',
 		], #sources
 		'include_dirs': [
-			'plank/src/',
 			'.'
 		], #include_dirs		
 	}, #target_defaults
