@@ -1,0 +1,12 @@
+{
+	"import":[
+		"../twice-size/twice-size.json",
+		"../dynamo/def.json"
+	],
+	"sources": [
+		"src/emitter.h",
+		"src/emitter.hxx",
+		"src/quemitter.h",
+		"src/quemitter.hxx"
+	]
+}

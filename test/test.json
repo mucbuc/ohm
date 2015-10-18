@@ -1,0 +1,10 @@
+{
+	"import":[
+		"lib/ohm/ohm.json"
+	],
+	"sources": [
+		"src/emitter.cpp",
+		"src/emitter.h",
+		"src/emitter_fwd.h"
+	]
+}
