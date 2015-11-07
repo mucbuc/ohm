@@ -1,12 +1,6 @@
 {
-	"dependencies": [
-		{ 
-			"origin": "https://github.com/mucbuc/dynamo.git",
-			"path": "test/lib"
-		},
-		{ 
-			"origin": "https://github.com/mucbuc/twice-size.git",
-			"path": "test/lib"
-		}
+	"test/lib": [
+		"https://github.com/mucbuc/dynamo.git",
+		"https://github.com/mucbuc/twice-size.git"
 	]
 }
