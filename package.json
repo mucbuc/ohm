@@ -1,0 +1,22 @@
+{
+  "name": "ohm",
+  "version": "1.0.0",
+  "description": "ohm =============",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "crimp test/test.json -g"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mucbuc/ohm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mucbuc/ohm/issues"
+  },
+  "homepage": "https://github.com/mucbuc/ohm#readme"
+}
