@@ -1,7 +1,7 @@
 {
 	"import":[
-		"../twice-size/twice-size.json",
-		"../dynamo/def.json"
+		"../dynamo/def.json",
+		"../twice-size/twice-size.json"
 	],
 	"sources": [
 		"src/emitter.h",
