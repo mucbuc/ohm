@@ -4,14 +4,12 @@
 #include <functional>
 #include <string>
 
-namespace om636
-{
-    namespace control
-    {
-        template<typename = std::string, typename U = std::function<void()> >
-		class Emitter;
-    }
-    
-}	//core
+namespace om636 {
+namespace control {
+    template <typename = std::string, typename U = std::function<void()>>
+    class Emitter;
+}
+
+} //core
 
 #endif
