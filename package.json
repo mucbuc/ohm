@@ -1,5 +1,10 @@
 {
+  "name": "ohm",
   "scripts": {
     "test": "crimp test/test.json -g"
+  },
+  "devDependencies": {
+  	"dynamo": "mucbuc/dynamo#plus",
+  	"twice-size": "mubuc/twice-size#plus"
   }
 }
