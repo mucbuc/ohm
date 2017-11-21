@@ -7,52 +7,47 @@
 
 #include <lib/dynamo/src/batch.h>
 
-namespace om636
-{
-	namespace control 
-	{
-		template<typename T, typename U> 
-		class Emitter 
-		{
-		public: 
+namespace om636 {
+namespace control {
+    template <typename T, typename U>
+    class Emitter {
+    public:
+        typedef T event_type;
+        typedef U callback_type;
+        typedef Batch<callback_type> batch_type;
+        typedef typename batch_type::listener_type listener_type;
+        typedef typename batch_type::agent_type agent_type;
+        typedef typename batch_type::pointer_type pointer_type;
 
-		    typedef T event_type;
-			typedef U callback_type;
-			typedef Batch< callback_type > batch_type;
-            typedef typename batch_type::listener_type listener_type;
-            typedef typename batch_type::agent_type agent_type;
-            typedef typename batch_type::pointer_type pointer_type;
+        Emitter() = default;
+        virtual ~Emitter() = default;
+        Emitter(const Emitter&) = delete;
+        Emitter& operator=(const Emitter&) = delete;
 
-			Emitter() = default;
-			virtual ~Emitter() = default;
-            Emitter(const Emitter &) = delete;
-            Emitter & operator=(const Emitter &) = delete;
-			
-			listener_type on( event_type, callback_type );
-			listener_type once( event_type, callback_type );
-			
-			void removeListeners( event_type );
-			void removeAllListeners();
+        listener_type on(event_type, callback_type);
+        listener_type once(event_type, callback_type);
 
-			void emit( event_type );
-			
-			template<class V> 
-			void emit( event_type, V );
-			
-			template<typename V, typename W> 
-			void emit( event_type, V, W );
-            
-		private:
+        void removeListeners(event_type);
+        void removeAllListeners();
 
-            typedef std::map< event_type, batch_type > map_type;
-            void kill_all(map_type &);
-			
-			map_type m_repeat;
-            map_type m_once;
-		};
-	}	//control
-}	// om636
+        void emit(event_type);
+
+        template <class V>
+        void emit(event_type, V);
+
+        template <typename V, typename W>
+        void emit(event_type, V, W);
+
+    private:
+        typedef std::map<event_type, batch_type> map_type;
+        void kill_all(map_type&);
+
+        map_type m_repeat;
+        map_type m_once;
+    };
+} //control
+} // om636
 
 #include "emitter.hxx"
 
-#endif 
+#endif
