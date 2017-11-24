@@ -39,13 +39,14 @@ namespace control {
     template <class T, class U, template<typename> class P>
     void Quemitter<T, U, P>::push_event(function_type f)
     {
-        std::unique_lock<mutex_type> lock(m_mutex, std::try_to_lock);
-        if (lock.owns_lock())
-            do
-                f();
-            while (m_queue.try_pop(f));
-        else
-            m_queue.push(f);
+        m_queue.push(f);
+        
+        for (std::unique_lock<mutex_type> lock(m_mutex, std::defer_lock);
+             lock.try_lock() && m_queue.try_pop(f);
+             lock.unlock())
+        {
+            f();
+        }
     }
 
 } //control
