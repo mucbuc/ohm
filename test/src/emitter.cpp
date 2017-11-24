@@ -18,6 +18,9 @@ void test_emitter()
     check_once_while_emit_recursive<T>();
 }
 
+template<class T, class U>
+using QE = om636::control::Quemitter<T, U>;
+
 int main()
 {
     using namespace std;
@@ -25,8 +28,8 @@ int main()
     test_emitter<om636::control::Emitter>();
     cout << "om636::control::Emitter passed" << endl
          << endl;
-
-    test_emitter<om636::control::Quemitter>();
+    
+    test_emitter<QE>();
     cout << "om636::control::Quemitter passed" << endl
          << endl;
     return 0;

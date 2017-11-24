@@ -6,9 +6,23 @@
 
 namespace om636 {
 namespace control {
-    template <typename T, typename U>
+
+
+    template<typename T>
+    class default_policy
+    {
+        static void wtf(const T &);
+    };
+    
+
+        
+
+    template <typename T, typename U, template<typename> class P = default_policy>
     class Quemitter
-        : public Emitter<T, U> {
+    : public Emitter<T, U> {
+
+        typedef P< Quemitter< T, U, P > > fbp;
+
     public:
         typedef Emitter<T, U> base_type;
         using typename base_type::event_type;

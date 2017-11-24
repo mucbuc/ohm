@@ -1,8 +1,8 @@
 namespace om636 {
 namespace control {
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U>
-    void Quemitter<T, U>::emit(event_type e)
+    template <typename T, typename U, template<typename> class P>
+    void Quemitter<T, U, P>::emit(event_type e)
     {
         function_type p([e, this]() {
             base_type::emit(e);
@@ -12,9 +12,9 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U>
+    template <typename T, typename U, template<typename> class P>
     template <class V>
-    void Quemitter<T, U>::emit(event_type e, V v)
+    void Quemitter<T, U, P>::emit(event_type e, V v)
     {
         function_type p([e, v, this]() {
             base_type::emit(e, v);
@@ -24,9 +24,9 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U>
+    template <typename T, typename U, template<typename> class P>
     template <typename V, typename W>
-    void Quemitter<T, U>::emit(event_type e, V v, W w)
+    void Quemitter<T, U, P>::emit(event_type e, V v, W w)
     {
         function_type p([e, v, w, this]() {
             base_type::emit(e, v, w);
@@ -36,8 +36,8 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
-    template <class T, class U>
-    void Quemitter<T, U>::push_event(function_type f)
+    template <class T, class U, template<typename> class P>
+    void Quemitter<T, U, P>::push_event(function_type f)
     {
         std::unique_lock<mutex_type> lock(m_mutex, std::try_to_lock);
         if (lock.owns_lock())
