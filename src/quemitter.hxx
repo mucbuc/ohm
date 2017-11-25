@@ -41,11 +41,16 @@ namespace control {
     {
         m_queue.push(f);
         
-        for (std::unique_lock<mutex_type> lock(m_mutex, std::defer_lock);
-             lock.try_lock() && m_queue.try_pop(f);
-             lock.unlock())
+        fbp::pushed_event(* this);
+        
+        std::unique_lock<mutex_type> lock(m_mutex, std::defer_lock);
+        while (     lock.try_lock()
+               &&   fbp::locked_mutex(* this)
+               &&   m_queue.try_pop(f))
         {
             f();
+            lock.unlock();
+            fbp::unlocked_mutex(* this);
         }
     }
 

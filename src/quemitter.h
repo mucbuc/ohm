@@ -9,13 +9,12 @@ namespace control {
 
 
     template<typename T>
-    class default_policy
+    struct default_policy
     {
-        static void wtf(const T &);
+        static void pushed_event(const T &) {}
+        static bool locked_mutex(const T &) { return true; }
+        static void unlocked_mutex(const T &) {}
     };
-    
-
-        
 
     template <typename T, typename U, template<typename> class P = default_policy>
     class Quemitter
