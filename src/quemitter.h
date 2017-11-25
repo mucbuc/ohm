@@ -7,20 +7,18 @@
 namespace om636 {
 namespace control {
 
-
-    template<typename T>
-    struct default_policy
-    {
-        static void pushed_event(const T &) {}
-        static bool locked_mutex(const T &) { return true; }
-        static void unlocked_mutex(const T &) {}
+    template <typename T>
+    struct default_policy {
+        static void pushed_event(const T&) {}
+        static bool locked_mutex(const T&) { return true; }
+        static void unlocked_mutex(const T&) {}
     };
 
-    template <typename T, typename U, template<typename> class P = default_policy>
+    template <typename T, typename U, template <typename> class P = default_policy>
     class Quemitter
-    : public Emitter<T, U> {
+        : public Emitter<T, U> {
 
-        typedef P< Quemitter< T, U, P > > fbp;
+        typedef P<Quemitter<T, U, P>> fbp;
 
     public:
         typedef Emitter<T, U> base_type;
