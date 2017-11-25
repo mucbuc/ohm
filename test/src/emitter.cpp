@@ -16,25 +16,21 @@ void test_emitter()
     check_on_while_emit<T>();
     check_once_while_emit<T>();
     check_once_while_emit_recursive<T>();
+
+    FOOTER;
 }
 
 void run_concurent_test();
 
 template<class T, class U>
-using QE = om636::control::Quemitter<T, U>;
+using QueuedEmitter = om636::control::Quemitter<T, U>;
 
 int main()
 {
     using namespace std;
 
     test_emitter<om636::control::Emitter>();
-    cout << "om636::control::Emitter passed" << endl
-         << endl;
-    
-    test_emitter<QE>();
-    cout << "om636::control::Quemitter passed" << endl
-         << endl;
-
+    test_emitter<QueuedEmitter>();
     run_concurent_test();
     
     return 0;
