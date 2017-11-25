@@ -40,7 +40,6 @@ namespace control {
     void Quemitter<T, U, P>::push_event(function_type f)
     {
         m_queue.push(f);
-        
         fbp::pushed_event(* this);
         
         std::unique_lock<mutex_type> lock(m_mutex, std::defer_lock);
@@ -49,6 +48,7 @@ namespace control {
                &&   m_queue.try_pop(f))
         {
             f();
+
             lock.unlock();
             fbp::unlocked_mutex(* this);
         }
