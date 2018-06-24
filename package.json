@@ -2,10 +2,14 @@
   "name": "ohm",
   "version": "0.0.0",
   "scripts": {
-    "test": "crimp test/test.json -g"
+    "test": "crimp test/test.json -g",
+    "fetch": "npx plusi install"
+  },
+  "dependencies": {
+    "plusi": "*"
   },
   "devDependencies": {
-  	"dynamo": "mucbuc/dynamo#plus",
-  	"twice-size": "mucbuc/twice-size#plus"
+    "dynamo": "mucbuc/dynamo#plus",
+    "twice-size": "mucbuc/twice-size#plus"
   }
 }
