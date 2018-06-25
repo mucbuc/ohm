@@ -1,0 +1,32 @@
+{
+  "_from": "github:mucbuc/dynamo#plus",
+  "_id": "dynamo@0.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-faG8G0Q9xMiSpv6Tvj7WkxJsEKw=",
+  "_location": "/dynamo",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "dynamo@github:mucbuc/dynamo#plus",
+    "name": "dynamo",
+    "escapedName": "dynamo",
+    "rawSpec": "github:mucbuc/dynamo#plus",
+    "saveSpec": "github:mucbuc/dynamo#plus",
+    "fetchSpec": null,
+    "gitCommittish": "plus"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "github:mucbuc/dynamo#6fb6da3cd35a0c2097309b032bab33dee3f85058",
+  "_spec": "dynamo@github:mucbuc/dynamo#plus",
+  "_where": "/private/var/folders/96/1d5h9mg54w312jymgz5nps7h0000gp/T/tmp-36951p5UNmEne7M85",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "![doc header](https://s3-us-west-2.amazonaws.com/mod-resources/mod-header.svg)",
+  "name": "dynamo",
+  "scripts": {
+    "test": "crimp test/test.json -g"
+  },
+  "version": "0.0.0"
+}
