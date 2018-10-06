@@ -6,9 +6,7 @@
     "fetch": "npx plusi install"
   },
   "dependencies": {
-    "plusi": "*"
-  },
-  "devDependencies": {
+    "plusi": "*",
     "dynamo": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo", 
     "twice-size": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size"
   }
