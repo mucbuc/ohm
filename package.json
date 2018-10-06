@@ -9,7 +9,7 @@
     "plusi": "*"
   },
   "devDependencies": {
-    "dynamo": "mucbuc/dynamo#plus",
-    "twice-size": "mucbuc/twice-size#plus"
+    "dynamo": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo", 
+    "twice-size": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size"
   }
 }
