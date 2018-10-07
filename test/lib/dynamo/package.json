@@ -1,66 +1,30 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "dynamo@github:mucbuc/dynamo#plus",
-        "scope": null,
-        "escapedName": "dynamo",
-        "name": "dynamo",
-        "rawSpec": "github:mucbuc/dynamo#plus",
-        "spec": "github:mucbuc/dynamo#plus",
-        "type": "hosted",
-        "hosted": {
-          "type": "github",
-          "ssh": "git@github.com:mucbuc/dynamo.git#plus",
-          "sshUrl": "git+ssh://git@github.com/mucbuc/dynamo.git#plus",
-          "httpsUrl": "git+https://github.com/mucbuc/dynamo.git#plus",
-          "gitUrl": "git://github.com/mucbuc/dynamo.git#plus",
-          "shortcut": "github:mucbuc/dynamo#plus",
-          "directUrl": "https://raw.githubusercontent.com/mucbuc/dynamo/plus/package.json"
-        }
-      },
-      "/private/var/folders/96/1d5h9mg54w312jymgz5nps7h0000gp/T/tmp-4818WHvHAKQFbbnh"
-    ]
-  ],
-  "_from": "mucbuc/dynamo#plus",
+  "_from": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
   "_id": "dynamo@0.0.0",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "",
   "_location": "/dynamo",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "dynamo@github:mucbuc/dynamo#plus",
-    "scope": null,
-    "escapedName": "dynamo",
+    "type": "git",
+    "raw": "dynamo@git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
     "name": "dynamo",
-    "rawSpec": "github:mucbuc/dynamo#plus",
-    "spec": "github:mucbuc/dynamo#plus",
-    "type": "hosted",
-    "hosted": {
-      "type": "github",
-      "ssh": "git@github.com:mucbuc/dynamo.git#plus",
-      "sshUrl": "git+ssh://git@github.com/mucbuc/dynamo.git#plus",
-      "httpsUrl": "git+https://github.com/mucbuc/dynamo.git#plus",
-      "gitUrl": "git://github.com/mucbuc/dynamo.git#plus",
-      "shortcut": "github:mucbuc/dynamo#plus",
-      "directUrl": "https://raw.githubusercontent.com/mucbuc/dynamo/plus/package.json"
-    }
+    "escapedName": "dynamo",
+    "rawSpec": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
+    "saveSpec": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
+    "fetchSpec": "ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "#DEV:/"
   ],
-  "_resolved": "git://github.com/mucbuc/dynamo.git#6fb6da3cd35a0c2097309b032bab33dee3f85058",
-  "_shasum": "ca0e124b395cd3ab35886211f50df33b8b531559",
-  "_shrinkwrap": null,
-  "_spec": "dynamo@github:mucbuc/dynamo#plus",
-  "_where": "/private/var/folders/96/1d5h9mg54w312jymgz5nps7h0000gp/T/tmp-4818WHvHAKQFbbnh",
-  "dependencies": {},
+  "_resolved": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo#5521f5f65b89bdb2a848d3e497b1c591fe39c15e",
+  "_spec": "dynamo@git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
+  "_where": "/tmp/tmp-19407mDBLiB1TSSY9",
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "![doc header](https://s3-us-west-2.amazonaws.com/mod-resources/mod-header.svg)",
-  "devDependencies": {},
-  "gitHead": "6fb6da3cd35a0c2097309b032bab33dee3f85058",
   "name": "dynamo",
-  "optionalDependencies": {},
-  "readme": "## dynamo\r\n\r\n![doc header](https://s3-us-west-2.amazonaws.com/mod-resources/mod-header.svg)",
-  "readmeFilename": "README.md",
   "scripts": {
     "test": "crimp test/test.json -g"
   },

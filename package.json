@@ -5,8 +5,7 @@
     "test": "crimp test/test.json -g",
     "fetch": "npx plusi install"
   },
-  "dependencies": {
-    "plusi": "*",
+  "devDependencies": {
     "dynamo": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo", 
     "twice-size": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size"
   }

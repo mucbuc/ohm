@@ -1,66 +1,30 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "twice-size@github:mucbuc/twice-size#plus",
-        "scope": null,
-        "escapedName": "twice-size",
-        "name": "twice-size",
-        "rawSpec": "github:mucbuc/twice-size#plus",
-        "spec": "github:mucbuc/twice-size#plus",
-        "type": "hosted",
-        "hosted": {
-          "type": "github",
-          "ssh": "git@github.com:mucbuc/twice-size.git#plus",
-          "sshUrl": "git+ssh://git@github.com/mucbuc/twice-size.git#plus",
-          "httpsUrl": "git+https://github.com/mucbuc/twice-size.git#plus",
-          "gitUrl": "git://github.com/mucbuc/twice-size.git#plus",
-          "shortcut": "github:mucbuc/twice-size#plus",
-          "directUrl": "https://raw.githubusercontent.com/mucbuc/twice-size/plus/package.json"
-        }
-      },
-      "/private/var/folders/96/1d5h9mg54w312jymgz5nps7h0000gp/T/tmp-4818WHvHAKQFbbnh"
-    ]
-  ],
-  "_from": "mucbuc/twice-size#plus",
+  "_from": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size",
   "_id": "twice-size@0.0.0",
-  "_inCache": true,
+  "_inBundle": false,
+  "_integrity": "",
   "_location": "/twice-size",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "twice-size@github:mucbuc/twice-size#plus",
-    "scope": null,
-    "escapedName": "twice-size",
+    "type": "git",
+    "raw": "twice-size@git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size",
     "name": "twice-size",
-    "rawSpec": "github:mucbuc/twice-size#plus",
-    "spec": "github:mucbuc/twice-size#plus",
-    "type": "hosted",
-    "hosted": {
-      "type": "github",
-      "ssh": "git@github.com:mucbuc/twice-size.git#plus",
-      "sshUrl": "git+ssh://git@github.com/mucbuc/twice-size.git#plus",
-      "httpsUrl": "git+https://github.com/mucbuc/twice-size.git#plus",
-      "gitUrl": "git://github.com/mucbuc/twice-size.git#plus",
-      "shortcut": "github:mucbuc/twice-size#plus",
-      "directUrl": "https://raw.githubusercontent.com/mucbuc/twice-size/plus/package.json"
-    }
+    "escapedName": "twice-size",
+    "rawSpec": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size",
+    "saveSpec": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size",
+    "fetchSpec": "ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "#DEV:/"
   ],
-  "_resolved": "git://github.com/mucbuc/twice-size.git#6ece31179eeea3e164209227f1d768db11a44114",
-  "_shasum": "16e5128aa7d81761a348d9df81a61203cd0bdbd8",
-  "_shrinkwrap": null,
-  "_spec": "twice-size@github:mucbuc/twice-size#plus",
-  "_where": "/private/var/folders/96/1d5h9mg54w312jymgz5nps7h0000gp/T/tmp-4818WHvHAKQFbbnh",
-  "dependencies": {},
+  "_resolved": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size#6ece31179eeea3e164209227f1d768db11a44114",
+  "_spec": "twice-size@git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/twice-size",
+  "_where": "/tmp/tmp-19407mDBLiB1TSSY9",
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "twice-size ==========",
-  "devDependencies": {},
-  "gitHead": "6ece31179eeea3e164209227f1d768db11a44114",
   "name": "twice-size",
-  "optionalDependencies": {},
-  "readme": "twice-size\n==========\n\nC++ container classes\n\n![doc header](https://s3-us-west-2.amazonaws.com/mod-resources/mod-header.svg)\n\ninspired by \"C++ Concurrency in action\"\n",
-  "readmeFilename": "README.md",
   "scripts": {
     "test": "crimp test/test.json -g"
   },
