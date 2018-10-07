@@ -6,7 +6,7 @@
 
 namespace om636 {
 namespace control {
-    template <typename = std::string, typename U = std::function<void()>>
+    template <typename = std::string, typename U = std::function<void()> >
     class Emitter;
 }
 

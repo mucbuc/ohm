@@ -12,7 +12,7 @@ using namespace om636;
 template <template <class, class> class T>
 void check_emit_once()
 {
-    typedef T<string, function<void(int)>> emitter_type;
+    typedef T<string, function<void(int)> > emitter_type;
     emitter_type e;
 
     unsigned counter(0);
@@ -38,7 +38,7 @@ void check_emit_once()
 template <template <class, class> class T>
 void check_emit_with_arg()
 {
-    typedef T<string, function<void(int)>> emitter_type;
+    typedef T<string, function<void(int)> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
     emitter_type e;
 
@@ -65,7 +65,7 @@ void check_emit_with_arg()
 template <template <class, class> class T>
 void check_emit_with_args()
 {
-    typedef T<string, function<void(int, int)>> emitter_type;
+    typedef T<string, function<void(int, int)> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
     emitter_type e;
 
@@ -94,7 +94,7 @@ void check_emit_with_args()
 template <template <class, class> class T>
 void check_emit_while_emit()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     size_t counter(0);
@@ -117,7 +117,7 @@ void check_emit_while_emit()
 template <template <class, class> class T>
 void check_modify_while_traversal()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     static emitter_type emitter;
@@ -179,7 +179,7 @@ void check_modify_while_traversal()
 template <template <class, class> class T>
 void check_dispatch_logic()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     static unsigned trap(0);
@@ -300,7 +300,7 @@ void check_agent_life_time()
 template <template <class, class> class T>
 void check_on()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     emitter_type emitter;
@@ -325,7 +325,7 @@ void check_on()
 template <template <class, class> class T>
 void check_on_while_emit()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     emitter_type emitter;
@@ -352,7 +352,7 @@ void check_on_while_emit()
 template <template <class, class> class T>
 void check_once_while_emit()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     emitter_type emitter;
@@ -379,7 +379,7 @@ void check_once_while_emit()
 template <template <class, class> class T>
 void check_once_while_emit_recursive()
 {
-    typedef T<string, function<void()>> emitter_type;
+    typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     emitter_type emitter;

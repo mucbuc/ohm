@@ -18,7 +18,7 @@ namespace control {
     class Quemitter
         : public Emitter<T, U> {
 
-        typedef P<Quemitter<T, U, P>> fbp;
+        typedef P<Quemitter<T, U, P> > fbp;
 
     public:
         typedef Emitter<T, U> base_type;
