@@ -4,9 +4,9 @@ namespace control {
     template <typename T>
     auto Batch<T>::hook(callback_type c) -> listener_type
     {
-        pointer_type agent(new agent_type(c));
-        m_elements_add.insert(agent);
-        return listener_type(agent);
+        listener_type agent(std::make_shared<agent_type>(c));
+        m_elements_add.push_back(agent);
+        return agent;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@ namespace control {
     template <typename T>
     void Batch<T>::merge_added_elements()
     {
-        elements().insert(m_elements_add.begin(), m_elements_add.end());
+        elements().insert(elements().end(), m_elements_add.begin(), m_elements_add.end());
         m_elements_add.clear();
     }
 
@@ -104,10 +104,11 @@ namespace control {
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                if (!p->is_dead())
-                    p->invoke();
-                else
-                    elements.erase(p);
+                auto s(p.lock());
+		if (s && !s->is_dead())
+                    s->invoke();
+                //else
+                    //elements.erase(p);
             });
         }
 
@@ -117,10 +118,11 @@ namespace control {
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                if (!p->is_dead())
-                    p->invoke(v);
-                else
-                    elements.erase(p);
+                auto s(p.lock());
+		if (s && !s->is_dead())
+                    s->invoke(v);
+                //else
+                    //elements.erase(p);
             });
         }
 
@@ -130,10 +132,11 @@ namespace control {
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                if (!p->is_dead())
-                    p->invoke(v, w);
-                else
-                    elements.erase(p);
+                auto s(p.lock());
+		if (s && !s->is_dead())
+                    s->invoke(v, w);
+                //else
+                    //elements.erase(p);
             });
         }
 
@@ -143,8 +146,9 @@ namespace control {
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [](typename T::value_type p) {
-                if (!p->is_dead())
-                    p->kill_invoke();
+                auto s(p.lock());
+		if (s && !s->is_dead())
+                    s->kill_invoke();
             });
             elements.clear();
         }
@@ -155,8 +159,9 @@ namespace control {
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                if (!p->is_dead())
-                    p->kill_invoke(v);
+                auto s(p.lock());
+		if (s && !s->is_dead())
+                    s->kill_invoke(v);
             });
             elements.clear();
         }
@@ -167,8 +172,9 @@ namespace control {
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                if (!p->is_dead())
-                    p->kill_invoke(v, w);
+                auto s(p.lock());
+		if (s && !s->is_dead())
+                    s->kill_invoke(v, w);
             });
             elements.clear();
         }
@@ -178,7 +184,10 @@ namespace control {
         void kill_all(T& elements)
         {
             for_each(elements.begin(), elements.end(), [](typename T::value_type p) {
-                p->kill();
+                auto s(p.lock());
+		if (p) {
+		  p->kill();
+		}
             });
             elements.clear();
         }
