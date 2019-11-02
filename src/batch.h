@@ -30,13 +30,8 @@ namespace control {
         template <class ... V>
         void traverse(V ...);
 
-        void traverse_destructive();
-
-        template <class V>
-        void traverse_destructive(V);
-
-        template <typename V, typename W>
-        void traverse_destructive(V, W);
+        template <class ... V>
+        void traverse_destructive(V ...);
 
         batch_type& elements();
         const batch_type& elements() const;

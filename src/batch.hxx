@@ -29,31 +29,12 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T>
-    void Batch<T>::traverse_destructive()
+    template <class ... V>
+    void Batch<T>::traverse_destructive(V ... arg)
     {
         merge_added_elements();
 
-        utils::process_and_kill(elements());
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    template <class V>
-    void Batch<T>::traverse_destructive(V arg)
-    {
-        merge_added_elements();
-
-        utils::process_and_kill(elements(), arg);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    template <typename V, typename W>
-    void Batch<T>::traverse_destructive(V first_arg, W second_arg)
-    {
-        merge_added_elements();
-
-        utils::process_and_kill(elements(), first_arg, second_arg);
+        utils::process_and_kill(elements(), arg ...);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
