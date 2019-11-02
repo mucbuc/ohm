@@ -28,23 +28,23 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T>
-    template <class V>
-    void Batch<T>::traverse(V arg)
+    template <class ... V>
+    void Batch<T>::traverse(V ... arg)
     {
         merge_added_elements();
 
-        utils::process(elements(), arg);
+        utils::process(elements(), arg ... );
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    template <typename V, typename W>
-    void Batch<T>::traverse(V first_arg, W second_arg)
-    {
-        merge_added_elements();
+    //template <typename T>
+    //template <typename V, typename W>
+    //void Batch<T>::traverse(V first_arg, W second_arg)
+    //{
+        //merge_added_elements();
 
-        utils::process(elements(), first_arg, second_arg);
-    }
+        //utils::process(elements(), first_arg, second_arg);
+    //}
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T>

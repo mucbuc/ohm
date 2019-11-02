@@ -28,11 +28,11 @@ namespace control {
         void unhook();
         void traverse();
 
-        template <class V>
-        void traverse(V);
+        template <class ... V>
+        void traverse(V ...);
 
-        template <typename V, typename W>
-        void traverse(V, W);
+        //template <typename V, typename W>
+        //void traverse(V, W);
 
         void traverse_destructive();
 
