@@ -61,82 +61,28 @@ namespace control {
 
     namespace utils {
         /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T>
-        void process(T& elements)
+        template <typename T, typename ... V>
+        void process(T& elements, V ... v)
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
                 auto s(p.lock());
 		if (s && !s->is_dead())
-                    s->invoke();
+                    s->invoke(v ...);
                 //else
                     //elements.erase(p);
             });
         }
 
         /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T, typename V>
-        void process(T& elements, V v)
+        template <typename T, typename ... V>
+        void process_and_kill(T& elements, V ... v)
         {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
                 auto s(p.lock());
 		if (s && !s->is_dead())
-                    s->invoke(v);
-                //else
-                    //elements.erase(p);
-            });
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T, typename V, typename W>
-        void process(T& elements, V v, W w)
-        {
-            T copy(elements);
-            for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                auto s(p.lock());
-		if (s && !s->is_dead())
-                    s->invoke(v, w);
-                //else
-                    //elements.erase(p);
-            });
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T>
-        void process_and_kill(T& elements)
-        {
-            T copy(elements);
-            for_each(copy.begin(), copy.end(), [](typename T::value_type p) {
-                auto s(p.lock());
-		if (s && !s->is_dead())
-                    s->kill_invoke();
-            });
-            elements.clear();
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T, typename V>
-        void process_and_kill(T& elements, V v)
-        {
-            T copy(elements);
-            for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                auto s(p.lock());
-		if (s && !s->is_dead())
-                    s->kill_invoke(v);
-            });
-            elements.clear();
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T, typename V, typename W>
-        void process_and_kill(T& elements, V v, W w)
-        {
-            T copy(elements);
-            for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                auto s(p.lock());
-		if (s && !s->is_dead())
-                    s->kill_invoke(v, w);
+                    s->kill_invoke(v ...);
             });
             elements.clear();
         }

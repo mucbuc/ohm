@@ -45,23 +45,11 @@ namespace control {
 
     namespace utils {
 
-        template <typename T>
-        void process_and_kill(T&);
+        template <typename T, typename ... V>
+        void process_and_kill(T&, V...);
 
-        template <typename T, typename V>
-        void process_and_kill(T&, V);
-
-        template <typename T, typename V, typename W>
-        void process_and_kill(T&, V, W);
-
-        template <typename T>
-        void process(T&);
-
-        template <typename T, typename V>
-        void process(T&, V);
-
-        template <typename T, typename V, typename W>
-        void process(T&, V, W);
+        template <typename T, typename ... V>
+        void process(T&, V...);
 
         template <typename T>
         void kill_all(T&);
