@@ -16,8 +16,6 @@ namespace control {
         typedef U callback_type;
         typedef Batch<callback_type> batch_type;
         typedef typename batch_type::listener_type listener_type;
-        typedef typename batch_type::agent_type agent_type;
-        typedef typename batch_type::pointer_type pointer_type;
 
         Emitter() = default;
         virtual ~Emitter() = default;

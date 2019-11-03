@@ -24,8 +24,6 @@ namespace control {
         typedef Emitter<T, U> base_type;
         using typename base_type::event_type;
         using typename base_type::callback_type;
-        using typename base_type::agent_type;
-        using typename base_type::pointer_type;
         using typename base_type::listener_type;
 
         Quemitter() = default;
