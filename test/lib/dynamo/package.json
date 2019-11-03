@@ -1,0 +1,6 @@
+{ "version":"0.0.0",
+  "name":"dynamo",
+  "scripts": {
+    "test": "crimp test/test.json -g"
+  }
+}
