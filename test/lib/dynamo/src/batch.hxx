@@ -93,8 +93,8 @@ namespace control {
         {
             for_each(elements.begin(), elements.end(), [](typename T::value_type p) {
                 auto s(p.lock());
-		if (p) {
-		  p->kill();
+		if (s) {
+		  s->kill();
 		}
             });
             elements.clear();
