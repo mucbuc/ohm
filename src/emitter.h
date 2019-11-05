@@ -28,13 +28,8 @@ namespace control {
         void removeListeners(event_type);
         void removeAllListeners();
 
-        void emit(event_type);
-
-        template <class V>
-        void emit(event_type, V);
-
-        template <typename V, typename W>
-        void emit(event_type, V, W);
+        template <class ... V>
+        void emit(event_type, V ...);
 
     private:
         typedef std::map<event_type, batch_type> map_type;
