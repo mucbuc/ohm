@@ -1,13 +1,16 @@
+#include <string>
+
 #include <tmp/src/test.h>
 
 #include "emitter_fwd.h"
-#include "emitter.h"
+#include <lib/ohm/src/quemitter.h>
+
+using namespace std;
 
 void run_concurent_test();
 
 int main()
 {
-    using namespace std;
 
     run_concurent_test();
 
