@@ -398,3 +398,21 @@ void check_once_while_emit_recursive()
 
     FOOTER;
 }
+
+template <template <class, class> class T>
+void test_emitter()
+{
+    check_dispatch_logic<T>();
+    check_agent_life_time<T>();
+    check_modify_while_traversal<T>();
+    check_emit_while_emit<T>();
+    check_emit_with_args<T>();
+    check_emit_once<T>();
+    check_on<T>();
+    check_on_while_emit<T>();
+    check_once_while_emit<T>();
+    check_once_while_emit_recursive<T>();
+
+    FOOTER;
+}
+
