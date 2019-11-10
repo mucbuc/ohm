@@ -1,7 +1,7 @@
 #include <tmp/src/test.h>
 
+#include <lib/ohm/src/emitter.h>
 #include "emitter.h"
-#include "emitter_fwd.h"
 
 int main()
 {

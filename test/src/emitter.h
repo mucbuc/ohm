@@ -3,12 +3,9 @@
 #include <iostream>
 #include <vector>
 
-#include <lib/ohm/src/emitter.h>
-#include <lib/ohm/src/quemitter.h>
-
 using namespace std;
 using namespace om636;
-
+/*
 template <template <class, class> class T>
 void check_emit_once()
 {
@@ -174,7 +171,7 @@ void check_modify_while_traversal()
 
     FOOTER;
 }
-
+*/
 /////////////////////////////////////////////////////////////////
 template <template <class, class> class T>
 void check_dispatch_logic()
@@ -222,7 +219,7 @@ void check_dispatch_logic()
 
     FOOTER;
 }
-
+/*
 /////////////////////////////////////////////////////////////////
 template <template <class, class> class T>
 void check_agent_life_time()
@@ -398,11 +395,11 @@ void check_once_while_emit_recursive()
 
     FOOTER;
 }
-
+*/
 template <template <class, class> class T>
 void test_emitter()
 {
-    check_dispatch_logic<T>();
+    check_dispatch_logic<T>();/*
     check_agent_life_time<T>();
     check_modify_while_traversal<T>();
     check_emit_while_emit<T>();
@@ -412,7 +409,7 @@ void test_emitter()
     check_on_while_emit<T>();
     check_once_while_emit<T>();
     check_once_while_emit_recursive<T>();
-
+*/
     FOOTER;
 }
 
