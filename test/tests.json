@@ -6,5 +6,6 @@
 	"dispatch_logic.json",
 	"emit_while_emit.json",
 	"emit_with_arg.json",
-	"emit_with_args.json"
+	"emit_with_args.json",
+	"on.json"
 	] }
