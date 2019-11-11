@@ -1,0 +1,9 @@
+{
+	"include":[
+		"lib/ohm/ohm.json"
+	],
+	"sources": [
+		"src/emit_with_arg.cpp",
+		"src/emitter_fwd.h"
+	]
+}
