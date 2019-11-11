@@ -2,6 +2,8 @@
 
 #include <iostream>
 #include <vector>
+#include <lib/ohm/src/emitter.h>
+#include <lib/ohm/src/quemitter.h>
 
 using namespace std;
 using namespace om636;
@@ -80,3 +82,15 @@ void check_agent_life_time()
     FOOTER;
 }
 
+template <class T, class U>
+using QueuedEmitter = om636::control::Quemitter<T, U>;
+
+int main()
+{
+    using namespace std;
+
+    check_agent_life_time<om636::control::Emitter>();
+    check_agent_life_time<QueuedEmitter>();
+
+    return 0;
+}

@@ -1,3 +1,4 @@
 {
 	"tests":[
-		"emitter.json", "qemitte.json", "concurrent.json"] }
+		"concurrent.json",
+	"agent_life_time.json"] }
