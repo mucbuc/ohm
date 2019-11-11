@@ -3,5 +3,6 @@
 		"concurrent.json",
 	"agent_life_time.json",
 	"emit_once.json",
-	"dispatch_logic.json"
+	"dispatch_logic.json",
+	"emit_while_emit.json"
 	] }
