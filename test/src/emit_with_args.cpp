@@ -1,7 +1,8 @@
-#include <tmp/src/test.h>
 
 #include <iostream>
 #include <vector>
+#include <tmp/src/test.h>
+#include <lib/ohm/src/quemitter.h>
 
 using namespace std;
 using namespace om636;
@@ -33,4 +34,17 @@ void check_emit_with_args()
     ASSERT(test_passed == 2);
 
     FOOTER;
+}
+
+template <class T, class U>
+using QueuedEmitter = om636::control::Quemitter<T, U>;
+
+int main()
+{
+    using namespace std;
+
+    check_emit_with_args<om636::control::Emitter>();
+    check_emit_with_args<QueuedEmitter>();
+
+    return 0;
 }
