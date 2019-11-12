@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <tmp/src/test.h>
-#include <lib/ohm/src/emitter.h>
 #include <lib/ohm/src/quemitter.h>
 
 using namespace std;
