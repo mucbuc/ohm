@@ -9,5 +9,6 @@
 	"emit_with_args.json",
 	"on.json",
 	"modify_while_traversal.json",
-	"on_while_emit.json"
+	"on_while_emit.json",
+	"once_while_emit.json"
 	] }

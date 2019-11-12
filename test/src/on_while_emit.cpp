@@ -1,12 +1,14 @@
-#include <tmp/src/test.h>
 
 #include <iostream>
 #include <vector>
 
+#include <tmp/src/test.h>
+#include <lib/ohm/src/quemitter.h>
+
 using namespace std;
 using namespace om636;
 template <template <class, class> class T>
-void check_once_while_emit()
+void check_on_while_emit()
 {
     typedef T<string, function<void()> > emitter_type;
     typedef typename emitter_type::listener_type listener_type;
@@ -17,7 +19,7 @@ void check_once_while_emit()
     unsigned counter(0);
 
     listeners.push_back(emitter.once("load", [&]() {
-        listeners.push_back(emitter.once("on", [&]() {
+        listeners.push_back(emitter.on("on", [&]() {
             ++counter;
         }));
 
@@ -27,13 +29,10 @@ void check_once_while_emit()
     emitter.emit("load");
     emitter.emit("on");
 
-    ASSERT(counter == 1);
+    ASSERT(counter == 2);
 
     FOOTER;
 }
-
-#include <tmp/src/test.h>
-#include <lib/ohm/src/emitter.h>
 
 template <class T, class U>
 using QueuedEmitter = om636::control::Quemitter<T, U>;
@@ -42,8 +41,8 @@ int main()
 {
     using namespace std;
 
-    test_emitter<om636::control::Emitter>();
-    test_emitter<QueuedEmitter>();
+    check_on_while_emit<om636::control::Emitter>();
+    check_on_while_emit<QueuedEmitter>();
 
     return 0;
 }
