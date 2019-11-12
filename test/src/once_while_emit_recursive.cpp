@@ -1,7 +1,9 @@
-#include <tmp/src/test.h>
 
 #include <iostream>
 #include <vector>
+
+#include <tmp/src/test.h>
+#include <lib/ohm/src/quemitter.h>
 
 using namespace std;
 using namespace om636;
@@ -38,8 +40,8 @@ int main()
 {
     using namespace std;
 
-    test_emitter<om636::control::Emitter>();
-    test_emitter<QueuedEmitter>();
+    check_once_while_emit_recursive<om636::control::Emitter>();
+    check_once_while_emit_recursive<QueuedEmitter>();
 
     return 0;
 }
