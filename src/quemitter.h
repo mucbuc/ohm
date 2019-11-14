@@ -31,13 +31,8 @@ namespace control {
         Quemitter(const Quemitter&) = delete;
         Quemitter& operator=(const Quemitter&) = delete;
 
-        void emit(event_type);
-
-        template <class V>
-        void emit(event_type, V);
-
-        template <typename V, typename W>
-        void emit(event_type, V, W);
+        template <class ... V>
+        void emit(event_type, V ...);
 
     private:
         typedef std::function<void()> function_type;

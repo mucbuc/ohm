@@ -1,0 +1,10 @@
+-redo interface
+  -interupt flag instead of sepaate class's Emitter, QEmitter
+
+-package dependencies
+-integation guide
+-API doc
+-examples
+-change log
+-exception safety
+
