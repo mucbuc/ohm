@@ -2,15 +2,15 @@
 #include <iostream>
 #include <vector>
 #include <tmp/src/test.h>
-#include <lib/ohm/src/quemitter.h>
+#include <lib/ohm/src/emitter.h>
 
 using namespace std;
 using namespace om636;
 
-template <template <class, class> class T>
+template <template <class, class ...> class T>
 void check_emit_with_arg()
 {
-    typedef T<string, function<void(int)> > emitter_type;
+    typedef T<string, int> emitter_type;
     typedef typename emitter_type::listener_type listener_type;
     emitter_type e;
 
@@ -34,15 +34,15 @@ void check_emit_with_arg()
     FOOTER;
 }
 
-template <class T, class U>
-using QueuedEmitter = om636::control::Quemitter<T, U>;
+//template <class T, class U>
+//using QueuedEmitter = om636::control::Quemitter<T, U>;
 
 int main()
 {
     using namespace std;
 
     check_emit_with_arg<om636::control::Emitter>();
-    check_emit_with_arg<QueuedEmitter>();
+    //check_emit_with_arg<QueuedEmitter>();
 
     return 0;
 }

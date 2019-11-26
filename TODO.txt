@@ -1,5 +1,12 @@
+Implementation plan: 
+1) define abstract interface
+2) inherit from it
+3) add factory methdo
+4) hide implementation
+
 -redo interface
   -interupt flag instead of sepaate class's Emitter, QEmitter
+  -abstract interface and return from factory method
 
 -package dependencies
 -integation guide
