@@ -1,9 +1,8 @@
 namespace om636 {
 namespace control {
     /////////////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename U, template <typename> class P>
-    template <class ... V>
-    void Quemitter<T, U, P>::emit(event_type e, V ... v)
+    template <typename T, template <typename> class P, typename ... U>
+    void QuemitterImpl<T, P, ... U>::emit(event_type e, U ... v)
     {
         function_type p([e, v ..., this]() {
             base_type::emit(e, v ...);
@@ -13,8 +12,8 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
-    template <class T, class U, template <typename> class P>
-    void Quemitter<T, U, P>::push_event(function_type f)
+    template <class T, template <typename> class P, typename ... U>
+    void QuemitterImpl<T, P, ... U>::push_event(function_type f)
     {
         m_queue.push(f);
         fbp::pushed_event(*this);
