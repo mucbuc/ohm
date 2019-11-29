@@ -33,7 +33,7 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T, typename ... U>
-    void EmitterImpl<T, U ...>::interrupt(event_type e, U ... arg)
+    void EmitterImpl<T, U ...>::interupt(event_type e, U ... arg)
     {
         m_once[e].merge_added_elements();
         m_repeat[e].merge_added_elements();

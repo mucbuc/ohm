@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <tmp/src/test.h>
-#include <lib/ohm/src/emitter.h>
+#include <lib/ohm/src/emitter_impl.h>
 
 using namespace std;
 using namespace om636;
@@ -27,7 +27,7 @@ void check_emit_with_arg()
         ++test_passed;
     }));
 
-    e.emit(event, 99);
+    e.interupt(event, 99);
 
     ASSERT(test_passed == 2);
 
@@ -41,7 +41,7 @@ int main()
 {
     using namespace std;
 
-    check_emit_with_arg<om636::control::Emitter>();
+    check_emit_with_arg<om636::control::EmitterImpl>();
     //check_emit_with_arg<QueuedEmitter>();
 
     return 0;

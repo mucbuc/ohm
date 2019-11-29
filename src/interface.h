@@ -31,9 +31,9 @@ namespace control {
     
     template <typename T, typename ... U>
     class Quemitter
-        : public Emitter<T, U> {
+        : public Emitter<T, U ...> {
 
-        typedef Emitter<T, U> base_type;
+        typedef Emitter<T, U ... > base_type;
     
     public:
         using typename base_type::event_type;

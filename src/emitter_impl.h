@@ -5,12 +5,12 @@
 #include <memory>
 #include <set>
 
-#include "emitter.h" 
+#include "interface.h" 
 
 namespace om636 {
 namespace control {
     template <typename T, typename ... U>
-    class EmitterImpl : Emitter<T, ...U> 
+    class EmitterImpl : Emitter<T, U ...> 
     {
     public:
         typedef T event_type;
@@ -25,6 +25,12 @@ namespace control {
         void removeAllListeners();
 
         void interupt(event_type, U ...);
+   private:
+        typedef std::map<event_type, batch_type> map_type;
+        void kill_all(map_type&);
+
+        map_type m_repeat;
+        map_type m_once;
     };
 } //control
 } // om636

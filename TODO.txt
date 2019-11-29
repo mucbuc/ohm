@@ -1,4 +1,5 @@
-Implementation plan: 
+Implementation plan:
+X( restore member variales in emitter_impl 
 1) define abstract interface
 2) inherit from it
 3) add factory methdo
