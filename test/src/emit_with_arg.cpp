@@ -1,6 +1,4 @@
 
-#include <iostream>
-#include <vector>
 #include <tmp/src/test.h>
 #include <lib/ohm/src/emitter_impl.h>
 
@@ -10,26 +8,24 @@ using namespace om636;
 template <template <class, class ...> class T>
 void check_emit_with_arg()
 {
-    typedef T<string, int> emitter_type;
-    typedef typename emitter_type::listener_type listener_type;
-    emitter_type e;
+    T<string, int> e;
 
-    unsigned test_passed(0);
+    unsigned counter(0);
     string event("e");
 
-    listener_type p(e.once(event, [&](int i) {
+    auto p(e.once(event, [&](int i) {
         ASSERT(i == 99);
-        ++test_passed;
+        ++counter;
     }));
 
-    listener_type q(e.on(event, [&](int i) {
+    auto q(e.on(event, [&](int i) {
         ASSERT(i == 99);
-        ++test_passed;
+        ++counter;
     }));
 
     e.interupt(event, 99);
 
-    ASSERT(test_passed == 2);
+    ASSERT(counter == 2);
 
     FOOTER;
 }

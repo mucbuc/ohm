@@ -1,6 +1,7 @@
 #ifndef EMITTER_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
 #define EMITTER_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
 
+#include <functional>
 #include <map>
 #include <memory>
 #include <set>
