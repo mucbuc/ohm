@@ -19,21 +19,22 @@ namespace control {
 
     template <class T, template <typename> class P, typename ... U>
     class QuemitterImpl
-        : private EmitterImpl<T, U ...>
-	, public Quemitter<T, U ...>
+        : public Quemitter<T, U ...>
     {
-        typedef EmitterImpl<T, U ...> base_type;
+        typedef Quemitter<T, U ...> base_type;
     
     public:
         using typename base_type::event_type;
         using typename base_type::callback_type;
         using typename base_type::listener_type;
-	using base_type::on;
-	using base_type::once;
-	using base_type::removeListeners;
-	using base_type::removeAllListeners;
-	using base_type::interupt;
+	
+        listener_type on(event_type, callback_type) override;
+        listener_type once(event_type, callback_type) override;
 
+        void removeListeners(event_type) override;
+        void removeAllListeners() override;
+
+        void interupt(event_type, U ...) override;
         void emit(event_type, U ...) override;
 
     private:
@@ -43,7 +44,8 @@ namespace control {
         typedef std::mutex mutex_type;
 
         void push_event(function_type);
-
+        
+	EmitterImpl<T, U ...> m_reactor;
         queue_type m_queue;
         mutex_type m_mutex;
     };

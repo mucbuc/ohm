@@ -31,14 +31,15 @@ namespace control {
     };
     
     template <typename T, typename ... U>
-    class Quemitter 
+    class Quemitter : public Emitter<T, U ...>
     {
         
     public:
-	typedef T event_type;
-        typedef std::function<void(U...)> callback_type;
-        typedef Batch<callback_type> batch_type;
-        typedef typename batch_type::listener_type listener_type;
+	typedef Emitter<T, U ...> base_type;
+        using typename base_type::event_type;
+	using typename base_type::callback_type;
+        using typename base_type::batch_type;
+        using typename base_type::listener_type;
 
         virtual ~Quemitter() = default;
         virtual void emit(event_type, U ...) = 0;

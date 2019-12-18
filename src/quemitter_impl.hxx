@@ -1,11 +1,48 @@
 namespace om636 {
 namespace control {
+    
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename T, template <typename> class P, typename ... U>
+    auto QuemitterImpl<T, P, U ...>::on(event_type e, callback_type c) -> listener_type
+    {
+        return m_reactor.on(e, c);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename T, template <typename> class P, typename ... U>
+    auto QuemitterImpl<T, P, U ...>::once(event_type e, callback_type c) -> listener_type
+    {
+        return m_reactor.once(e, c);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename T, template <typename> class P, typename ... U>
+    void QuemitterImpl<T, P, U ...>::removeListeners(event_type e)
+    {
+        m_reactor.removeListeners(e);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename T, template <typename> class P, typename ... U>
+    void QuemitterImpl<T, P, U ...>::removeAllListeners()
+    {
+        m_reactor.removeAllListeners(); 
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename T, template <typename> class P, typename ... U>
+    void QuemitterImpl<T, P, U ...>::interupt(event_type e, U ... arg)
+    {
+        m_reactor.interupt(e, arg ...);
+    }
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     template <typename T, template <typename> class P, typename ... U>
     void QuemitterImpl<T, P, U ...>::emit(event_type e, U ... v)
     {
         function_type p([e, v ..., this]() {
-            base_type::interupt(e, v ...);
+            interupt(e, v ...);
         });
 
         push_event(p);
