@@ -18,13 +18,13 @@ namespace control {
         typedef Batch<callback_type> batch_type;
         typedef typename batch_type::listener_type listener_type;
 
-        listener_type on(event_type, callback_type);
-        listener_type once(event_type, callback_type);
+        listener_type on(event_type, callback_type) override;
+        listener_type once(event_type, callback_type) override;
 
-        void removeListeners(event_type);
-        void removeAllListeners();
+        void removeListeners(event_type) override;
+        void removeAllListeners() override;
 
-        void interupt(event_type, U ...);
+        void interupt(event_type, U ...) override;
    private:
         typedef std::map<event_type, batch_type> map_type;
         void kill_all(map_type&);

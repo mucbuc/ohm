@@ -1,6 +1,7 @@
 
 #include <tmp/src/test.h>
 #include <lib/ohm/src/emitter_impl.h>
+#include <lib/ohm/src/quemitter_impl.h>
 
 using namespace std;
 using namespace om636;
@@ -30,15 +31,15 @@ void check_emit_with_arg()
     FOOTER;
 }
 
-//template <class T, class U>
-//using QueuedEmitter = om636::control::Quemitter<T, U>;
+template <class T, class ... U>
+using QueuedEmitter = om636::control::QuemitterImpl<T, om636::control::default_policy, U ...>;
 
 int main()
 {
     using namespace std;
 
     check_emit_with_arg<om636::control::EmitterImpl>();
-    //check_emit_with_arg<QueuedEmitter>();
+    check_emit_with_arg<QueuedEmitter>();
 
     return 0;
 }
