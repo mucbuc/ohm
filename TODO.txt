@@ -1,13 +1,8 @@
-Implementation plan:
-X( restore member variales in emitter_impl 
-1) define abstract interface
-2) inherit from it
-3) add factory methdo
-4) hide implementation
+- rename emitter to reactor and quemitter to processor
+  (reactor reacts instantly -> interupt)
+  (processor puts it in a queue -> emit)
 
--redo interface
-  -interupt flag instead of sepaate class's Emitter, QEmitter
-  -abstract interface and return from factory method
+- add factory methdo
 
 -package dependencies
 -integation guide
