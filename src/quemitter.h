@@ -18,12 +18,12 @@ namespace control {
     class Quemitter
         : public Emitter<T, U> {
 
-        typedef P<Quemitter<T, U, P> > fbp;
+        typedef P<Quemitter<T, U, P>> fbp;
 
     public:
         typedef Emitter<T, U> base_type;
-        using typename base_type::event_type;
         using typename base_type::callback_type;
+        using typename base_type::event_type;
         using typename base_type::listener_type;
 
         Quemitter() = default;
@@ -31,8 +31,8 @@ namespace control {
         Quemitter(const Quemitter&) = delete;
         Quemitter& operator=(const Quemitter&) = delete;
 
-        template <class ... V>
-        void emit(event_type, V ...);
+        template <class... V>
+        void emit(event_type, V...);
 
     private:
         typedef std::function<void()> function_type;

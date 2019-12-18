@@ -5,13 +5,12 @@
 #include <memory>
 #include <set>
 
-#include "interface.h" 
+#include "interface.h"
 
 namespace om636 {
 namespace control {
-    template <typename T, typename ... U>
-    class EmitterImpl : Emitter<T, U ...> 
-    {
+    template <typename T, typename... U>
+    class EmitterImpl : Emitter<T, U...> {
     public:
         typedef T event_type;
         typedef std::function<void(U...)> callback_type;
@@ -24,8 +23,9 @@ namespace control {
         void removeListeners(event_type) override;
         void removeAllListeners() override;
 
-        void interupt(event_type, U ...) override;
-   private:
+        void interupt(event_type, U...) override;
+
+    private:
         typedef std::map<event_type, batch_type> map_type;
         void kill_all(map_type&);
 
