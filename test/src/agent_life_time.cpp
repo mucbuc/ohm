@@ -1,9 +1,9 @@
 #include <tmp/src/test.h>
 
 #include <iostream>
-#include <vector>
 #include <lib/ohm/src/emitter.h>
 #include <lib/ohm/src/quemitter.h>
+#include <vector>
 
 using namespace std;
 using namespace om636;

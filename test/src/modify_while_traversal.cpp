@@ -2,8 +2,8 @@
 #include <iostream>
 #include <vector>
 
-#include <tmp/src/test.h>
 #include <lib/ohm/src/quemitter.h>
+#include <tmp/src/test.h>
 
 using namespace std;
 using namespace om636;
@@ -11,7 +11,7 @@ using namespace om636;
 template <template <class, class> class T>
 void check_modify_while_traversal()
 {
-    typedef T<string, function<void()> > emitter_type;
+    typedef T<string, function<void()>> emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     static emitter_type emitter;

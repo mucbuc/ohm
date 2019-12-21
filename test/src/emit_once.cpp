@@ -1,9 +1,9 @@
 #include <tmp/src/test.h>
 
 #include <iostream>
-#include <vector>
 #include <lib/ohm/src/emitter.h>
 #include <lib/ohm/src/quemitter.h>
+#include <vector>
 
 using namespace std;
 using namespace om636;
@@ -11,7 +11,7 @@ using namespace om636;
 template <template <class, class> class T>
 void check_emit_once()
 {
-    typedef T<string, function<void(int)> > emitter_type;
+    typedef T<string, function<void(int)>> emitter_type;
     emitter_type e;
 
     unsigned counter(0);
