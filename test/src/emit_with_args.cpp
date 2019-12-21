@@ -12,7 +12,7 @@ int main()
     auto q(e.on("e", f));
     e.interupt("e", 7, 3);
 
-    ASSERT(sum == 42 && "emit with args passed");
+    ASSERT(sum == 42 && "emit with args");
 
     return 0;
 }
