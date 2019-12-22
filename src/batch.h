@@ -6,15 +6,14 @@
 #include <memory>
 #include <vector>
 
-#include "agent.h"
+#include "shared_agent.h"
 
 namespace om636 {
 namespace control {
-    template <typename T>
+    template <typename ...T>
     class Batch {
     public:
-        typedef T callback_type;
-        typedef Agent<callback_type> agent_type;
+        typedef Agent<T...> agent_type;
         typedef std::weak_ptr<agent_type> pointer_type;
         typedef std::vector<pointer_type> batch_type;
 
@@ -23,8 +22,8 @@ namespace control {
         Batch(const Batch&) = delete;
         Batch& operator=(const Batch&) = delete;
 
-	template<class U>
-        std::shared_ptr<U> hook(callback_type);
+	template<class U, class V>
+        std::shared_ptr<U> hook(V);
 
         void unhook();
 

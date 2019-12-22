@@ -1,27 +1,28 @@
 namespace om636 {
 namespace control {
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    template <typename U>
-    auto Batch<T>::hook(callback_type c) -> std::shared_ptr<U>
+    template <typename ...T>
+    template <typename U, typename V>
+    auto Batch<T...>::hook(V c) -> std::shared_ptr<U>
     {
-        auto agent(std::make_shared<shared_agent<U>>(c));
+        auto agent(std::make_shared<shared_agent<U, T...>>(c));
+	
         m_elements_add.push_back(agent);
         return agent;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    void Batch<T>::unhook()
+    template <typename ...T>
+    void Batch<T...>::unhook()
     {
         utils::kill_all(elements());
         utils::kill_all(m_elements_add);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
+    template <typename ...T>
     template <class ... V>
-    void Batch<T>::traverse(V ... arg)
+    void Batch<T...>::traverse(V ... arg)
     {
         merge_added_elements();
 
@@ -29,9 +30,9 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
+    template <typename ...T>
     template <class ... V>
-    void Batch<T>::traverse_destructive(V ... arg)
+    void Batch<T...>::traverse_destructive(V ... arg)
     {
         merge_added_elements();
 
@@ -39,22 +40,22 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    auto Batch<T>::elements() -> batch_type&
+    template <typename ...T>
+    auto Batch<T...>::elements() -> batch_type&
     {
         return m_elements;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    auto Batch<T>::elements() const -> const batch_type&
+    template <typename ...T>
+    auto Batch<T...>::elements() const -> const batch_type&
     {
         return m_elements;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T>
-    void Batch<T>::merge_added_elements()
+    template <typename ...T>
+    void Batch<T...>::merge_added_elements()
     {
         elements().insert(elements().end(), m_elements_add.begin(), m_elements_add.end());
         m_elements_add.clear();

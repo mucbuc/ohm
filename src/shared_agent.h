@@ -3,21 +3,21 @@
 
 #include <functional>
 
-#include <lib/dynamo/src/agent.h>
+#include "agent.h"
 
 namespace om636 {
 namespace control {
 
-template<typename T, typename U...>
+template<typename T, typename ...U>
 struct shared_agent : T, Agent<U...>
 {
   template<class V> 
   shared_agent(V && cb);
 
-  ~shared_agent() override = default;
+  ~shared_agent() = default;//override = default;
 
-  void invoke(...U) override;
-  void kill_invoke(...U) override;
+  void invoke(U...) override;
+  void kill_invoke(U...) override;
   void kill() override;
   bool is_dead() override; 
 

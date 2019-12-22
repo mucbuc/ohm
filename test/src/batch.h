@@ -1,18 +1,21 @@
 using namespace om636;
 using namespace std;
 
-typedef std::function<void()> callback_type;
-typedef control::Batch<callback_type> batch_type;
+typedef control::Batch<> batch_type;
+
+struct empty_base
+{
+  virtual ~empty_base() = default;
+};
 
 void check_traverse_with_arg()
 {
-    typedef function<void(int)> callback_type;
-    typedef control::Batch<callback_type> batch_type;
+    typedef control::Batch<int> batch_type;
 
     unsigned test_passed(0);
     batch_type batch;
 
-    auto p(batch.hook([&](int i) {
+    auto p(batch.hook<empty_base>([&](int i) {
         ASSERT(i == 99);
         ++test_passed;
     }));
@@ -25,13 +28,12 @@ void check_traverse_with_arg()
 
 void check_traverse_with_args()
 {
-    typedef function<void(int, int)> callback_type;
-    typedef control::Batch<callback_type> batch_type;
+    typedef control::Batch<int, int> batch_type;
 
     unsigned test_passed(0);
     batch_type batch;
 
-    auto p(batch.hook([&](int i, int j) {
+    auto p(batch.hook<empty_base>([&](int i, int j) {
         ASSERT(i == 99);
         ASSERT(j == 3);
         ++test_passed;
@@ -48,7 +50,7 @@ void check_traverse_while_traverse()
     batch_type batch;
     unsigned passed(0);
 
-    auto p(batch.hook([&]() {
+    auto p(batch.hook<empty_base>([&]() {
         ++passed;
         batch.traverse();
     }));
@@ -64,7 +66,7 @@ void check_traverse()
     batch_type batch;
     unsigned passed(0);
 
-    auto temp(batch.hook([&]() {
+    auto temp(batch.hook<empty_base>([&]() {
         ++passed;
     }));
 
