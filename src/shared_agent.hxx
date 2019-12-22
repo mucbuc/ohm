@@ -5,7 +5,8 @@ namespace control {
     // shared_agent
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T, typename U...>
-    shared_agent<T, U...>::Agent(callback_type callback)
+    template <typename V>
+    shared_agent<T, U...>::shared_agent(V && callback)
         : m_callback(callback)
     {
     }
