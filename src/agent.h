@@ -4,35 +4,14 @@
 namespace om636 {
 namespace control {
 
-    template <typename T>
+    template <typename T...>
     struct Agent {
-        typedef T callback_type;
-        Agent(callback_type);
+        virtual void invoke(...T) = 0;
 
-        Agent(const Agent&) = delete;
-        Agent& operator=(const Agent&) = delete;
+        virtual void kill_invoke(...T) = 0;
 
-        void invoke();
-
-        template <class V>
-        void invoke(V);
-
-        template <typename V, typename W>
-        void invoke(V, W);
-
-        void kill_invoke();
-
-        template <class V>
-        void kill_invoke(V);
-
-        template <typename V, typename W>
-        void kill_invoke(V, W);
-
-        void kill();
-        bool is_dead();
-
-    private:
-        callback_type m_callback;
+        virtual void kill() = 0;
+        virtual bool is_dead() = 0;
     };
 
 } //control

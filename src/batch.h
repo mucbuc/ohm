@@ -16,7 +16,6 @@ namespace control {
         typedef T callback_type;
         typedef Agent<callback_type> agent_type;
         typedef std::weak_ptr<agent_type> pointer_type;
-        typedef std::shared_ptr<agent_type> listener_type;
         typedef std::vector<pointer_type> batch_type;
 
         Batch() = default;
@@ -24,7 +23,9 @@ namespace control {
         Batch(const Batch&) = delete;
         Batch& operator=(const Batch&) = delete;
 
-        listener_type hook(callback_type);
+	template<class U>
+        std::shared_ptr<U> hook(callback_type);
+
         void unhook();
 
         template <class ... V>
