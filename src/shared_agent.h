@@ -18,11 +18,13 @@ struct shared_agent : T, Agent<U...>
   void kill() override;
   bool is_dead() override; 
 private: 
-
-  std::function< > ... ; 
+  typedef std::function<void(U...)> callback_type;
+  callback_type m_callback;
 };
 
 } // control
 } // om636
+
+#include "shared_agent.hxx"
 
 #endif // SHARED_AGENT_H_OWKJEKJKWKW3929293
