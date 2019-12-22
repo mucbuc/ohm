@@ -1,16 +1,13 @@
-#include <tmp/src/test.h>
-
 #include <iostream>
-#include <lib/ohm/src/emitter.h>
-#include <lib/ohm/src/quemitter.h>
 #include <vector>
+
+#include <tmp/src/test.h>
+#include <lib/ohm/src/emitter_impl.h>
 
 using namespace std;
 using namespace om636;
 
-/////////////////////////////////////////////////////////////////
-template <template <class, class> class T>
-void check_agent_life_time()
+int main()
 {
     struct dummy_callback {
         dummy_callback()
@@ -37,14 +34,13 @@ void check_agent_life_time()
         }
     };
 
-    typedef T<string, dummy_callback> emitter_type;
-    typedef typename emitter_type::listener_type listener_type;
-
     static string event("init");
+    typedef om636::control::EmitterImpl<string, dummy_callback> emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
     emitter_type emitter;
 
     if (1) {
-        auto listener(emitter.on(event, dummy_callback()));
+        auto listener(emitter.on(event, [](){}));
         emitter.removeListeners(event);
 
         // this reference is owned by the listener
@@ -89,8 +85,8 @@ int main()
 {
     using namespace std;
 
-    check_agent_life_time<om636::control::Emitter>();
-    check_agent_life_time<QueuedEmitter>();
+    check_agent_life_time<om636::control::EmitterImpl>();
+//    check_agent_life_time<QueuedEmitter>();
 
     return 0;
 }

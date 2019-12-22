@@ -1,3 +1,5 @@
+- replace hardcoded std::function with template parameter 
+
 - rename emitter to reactor and quemitter to processor
   (reactor reacts instantly -> interupt)
   (processor puts it in a queue -> emit)
