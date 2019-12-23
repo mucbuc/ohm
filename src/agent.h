@@ -4,10 +4,10 @@
 namespace om636 {
 namespace control {
 
-    template <typename ... T>
+    template <typename... T>
     struct Agent {
 
-	virtual ~Agent() = default;
+        virtual ~Agent() = default;
         virtual void invoke(T...) = 0;
 
         virtual void kill_invoke(T...) = 0;

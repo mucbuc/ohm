@@ -4,24 +4,24 @@ namespace control {
     /////////////////////////////////////////////////////////////////////////////////////
     // shared_agent
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename ...U>
+    template <typename T, typename... U>
     template <typename V>
-    shared_agent<T, U...>::shared_agent(V && callback)
+    shared_agent<T, U...>::shared_agent(V&& callback)
         : m_callback(callback)
     {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename ...U>
-    void shared_agent<T, U...>::invoke(U ... args)
+    template <typename T, typename... U>
+    void shared_agent<T, U...>::invoke(U... args)
     {
         ASSERT(!is_dead());
         m_callback(args...);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename ...U>
-    void shared_agent<T, U...>::kill_invoke(U ... args)
+    template <typename T, typename... U>
+    void shared_agent<T, U...>::kill_invoke(U... args)
     {
         ASSERT(!is_dead());
         callback_type temp(m_callback);
@@ -30,14 +30,14 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename ...U>
+    template <typename T, typename... U>
     void shared_agent<T, U...>::kill()
     {
         m_callback = callback_type();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename ...U>
+    template <typename T, typename... U>
     bool shared_agent<T, U...>::is_dead()
     {
         return !m_callback;
@@ -45,4 +45,3 @@ namespace control {
 
 } //control
 } // om636amespace om636 {
-
