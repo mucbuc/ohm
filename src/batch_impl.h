@@ -24,9 +24,6 @@ namespace control {
         void traverse(T...) override;
         void traverse_destructive(T...) override;
 
-        template <typename U, typename V>
-        std::shared_ptr<U> hook(V);
-
     private:
         typedef std::weak_ptr<agent_type> pointer_type;
         typedef std::vector<pointer_type> batch_type;
