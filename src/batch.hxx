@@ -21,8 +21,7 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename ...T>
-    template <class ... V>
-    void Batch<T...>::traverse(V ... arg)
+    void Batch<T...>::traverse(T ... arg)
     {
         merge_added_elements();
 
@@ -31,8 +30,7 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename ...T>
-    template <class ... V>
-    void Batch<T...>::traverse_destructive(V ... arg)
+    void Batch<T...>::traverse_destructive(T ... arg)
     {
         merge_added_elements();
 

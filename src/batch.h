@@ -27,18 +27,16 @@ namespace control {
 
         void unhook();
 
-        template <class ... V>
-        void traverse(V ...);
+        void traverse(T ...);
 
-        template <class ... V>
-        void traverse_destructive(V ...);
+        void traverse_destructive(T ...);
 
+    private:
         batch_type& elements();
         const batch_type& elements() const;
 
         void merge_added_elements();
 
-    private:
         batch_type m_elements;
         batch_type m_elements_add;
     };
