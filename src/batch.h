@@ -11,10 +11,10 @@ namespace control {
     class Batch {
     public:
         typedef Agent<T...> agent_type;
-        typedef std::weak_ptr<agent_type> pointer_type;
 
         virtual ~Batch() = default;
-        virtual void unhook() = 0;
+        virtual std::shared_ptr<agent_type> hook(std::function<void(T...)>) = 0;
+       	virtual void unhook() = 0;
         virtual void traverse(T ...) = 0;
         virtual void traverse_destructive(T ...) = 0;
     };

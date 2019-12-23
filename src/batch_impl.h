@@ -14,13 +14,13 @@ namespace control {
     class BatchImpl : public Batch<T...>
     {
     public:
-
         typedef Batch<T...> base_type;
-        using typename base_type::pointer_type;
+	using typename base_type::agent_type; 
 
         BatchImpl() = default;
         ~BatchImpl() override = default;
 
+        std::shared_ptr<agent_type> hook(std::function<void(T...)>) override;
         void unhook() override;
         void traverse(T ...) override;
         void traverse_destructive(T ...) override;
@@ -29,6 +29,7 @@ namespace control {
 	std::shared_ptr<U> hook(V);
 
     private:
+        typedef std::weak_ptr<agent_type> pointer_type; 
         typedef std::vector<pointer_type> batch_type;
         batch_type& elements();
         const batch_type& elements() const;
@@ -49,6 +50,11 @@ namespace control {
 
         template <typename T>
         void kill_all(T&);
+	
+	struct empty_base
+        {
+           virtual ~empty_base() = default;
+        };
     }
 
 } //control

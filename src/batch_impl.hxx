@@ -2,12 +2,11 @@ namespace om636 {
 namespace control {
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename ...T>
-    template <typename U, typename V>
-    auto BatchImpl<T...>::hook(V callback) -> std::shared_ptr<U>
+    auto BatchImpl<T...>::hook(std::function<void(T...)> callback) -> std::shared_ptr<agent_type>
     {
-       auto listener( std::make_shared<shared_agent<U, T...>>(callback) );
-       m_elements_add.push_back(listener);
-       return listener;
+       auto agent( std::make_shared<shared_agent<utils::empty_base, T...>>(callback) );
+       m_elements_add.push_back(agent);
+       return agent;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
