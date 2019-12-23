@@ -1,7 +1,7 @@
 using namespace om636;
 using namespace std;
 
-typedef control::Batch<> batch_type;
+typedef control::BatchImpl<> batch_type;
 
 struct empty_base
 {
@@ -10,7 +10,7 @@ struct empty_base
 
 void check_traverse_with_arg()
 {
-    typedef control::Batch<int> batch_type;
+    typedef control::BatchImpl<int> batch_type;
 
     unsigned test_passed(0);
     batch_type batch;
@@ -28,7 +28,7 @@ void check_traverse_with_arg()
 
 void check_traverse_with_args()
 {
-    typedef control::Batch<int, int> batch_type;
+    typedef control::BatchImpl<int, int> batch_type;
 
     unsigned test_passed(0);
     batch_type batch;

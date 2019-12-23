@@ -3,7 +3,7 @@
 
 #include <tmp/src/test.h>
 
-#include <lib/dynamo/src/batch.h>
+#include <lib/dynamo/src/batch_impl.h>
 
 #include "batch.h"
 
