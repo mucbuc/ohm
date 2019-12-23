@@ -4,7 +4,7 @@ namespace control {
     template <typename... T>
     auto BatchImpl<T...>::hook(std::function<void(T...)> callback) -> std::shared_ptr<agent_type>
     {
-        auto agent(std::make_shared<shared_agent<utils::empty_base, T...>>(callback));
+        auto agent(std::make_shared<shared_agent<T...>>(callback));
         m_elements_add.push_back(agent);
         return agent;
     }

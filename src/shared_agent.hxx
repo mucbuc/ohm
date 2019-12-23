@@ -4,24 +4,24 @@ namespace control {
     /////////////////////////////////////////////////////////////////////////////////////
     // shared_agent
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename... U>
+    template <typename... T>
     template <typename V>
-    shared_agent<T, U...>::shared_agent(V&& callback)
+    shared_agent<T...>::shared_agent(V&& callback)
         : m_callback(callback)
     {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename... U>
-    void shared_agent<T, U...>::invoke(U... args)
+    template <typename... T>
+    void shared_agent<T...>::invoke(T... args)
     {
         ASSERT(!is_dead());
         m_callback(args...);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename... U>
-    void shared_agent<T, U...>::kill_invoke(U... args)
+    template <typename... T>
+    void shared_agent<T...>::kill_invoke(T... args)
     {
         ASSERT(!is_dead());
         callback_type temp(m_callback);
@@ -30,15 +30,15 @@ namespace control {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename... U>
-    void shared_agent<T, U...>::kill()
+    template <typename... T>
+    void shared_agent<T...>::kill()
     {
         m_callback = callback_type();
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename... U>
-    bool shared_agent<T, U...>::is_dead()
+    template <typename... T>
+    bool shared_agent<T...>::is_dead()
     {
         return !m_callback;
     }

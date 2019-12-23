@@ -6,12 +6,9 @@ namespace control {
 
     template <typename... T>
     struct Agent {
-
         virtual ~Agent() = default;
         virtual void invoke(T...) = 0;
-
         virtual void kill_invoke(T...) = 0;
-
         virtual void kill() = 0;
         virtual bool is_dead() = 0;
     };
