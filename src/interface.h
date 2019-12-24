@@ -5,7 +5,7 @@
 
 namespace om636 {
 namespace control {
- 
+
     template <typename... T>
     struct Agent {
         virtual ~Agent() = default;
@@ -18,15 +18,13 @@ namespace control {
     class Batch : public Agent<T...> {
     public:
         typedef std::shared_ptr<Agent<T...>> agent_type;
-	typedef std::function<void(T...)> function_type;
+        typedef std::function<void(T...)> function_type;
 
         virtual ~Batch() = default;
         virtual agent_type hook(function_type) = 0;
     };
 
-
-} // control 
+} // control
 } // om636
 
-#endif 
-
+#endif
