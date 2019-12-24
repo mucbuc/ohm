@@ -6,7 +6,7 @@
 #include <memory>
 #include <set>
 
-#include <lib/dynamo/src/batch.h>
+#include <lib/dynamo/src/interface.h>
 
 namespace om636 {
 namespace control {
@@ -16,7 +16,7 @@ namespace control {
     public:
         typedef T event_type;
         typedef std::function<void(U...)> callback_type;
-        typedef Batch<callback_type> batch_type;
+        typedef Batch<U...> batch_type;
         typedef typename batch_type::listener_type listener_type;
 
         virtual ~Emitter() = default;
