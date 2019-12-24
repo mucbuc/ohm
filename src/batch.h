@@ -3,6 +3,7 @@
 
 #include <memory>
 
+#include "dynamofwd.h"
 #include "agent.h"
 
 namespace om636 {

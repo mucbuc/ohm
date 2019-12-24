@@ -1,12 +1,9 @@
 namespace om636 {
 namespace control {
-    template <typename>
+    template <typename ...>
     struct Agent;
 
-    template <typename>
-    struct Listener;
-
-    template <typename, typename>
+    template <typename ...>
     struct Batch;
 }
 }
