@@ -3,7 +3,7 @@
 
 #include <functional>
 
-#include "agent.h"
+#include "interface.h"
 
 namespace om636 {
 namespace control {
@@ -13,14 +13,15 @@ namespace control {
         template <class V>
         shared_agent(V&& cb);
 
-        ~shared_agent() = default; //override = default;
+        ~shared_agent() override = default;
 
         void invoke(T...) override;
         void kill_invoke(T...) override;
         void kill() override;
-        bool is_dead() override;
 
     private:
+        bool is_dead();
+
         typedef std::function<void(T...)> callback_type;
         callback_type m_callback;
     };

@@ -15,7 +15,7 @@ void check_traverse_with_arg()
         ++test_passed;
     }));
 
-    batch.traverse(99);
+    batch.invoke(99);
 
     ASSERT(test_passed == 1);
     FOOTER;
@@ -34,7 +34,7 @@ void check_traverse_with_args()
         ++test_passed;
     }));
 
-    batch.traverse(99, 3);
+    batch.invoke(99, 3);
 
     ASSERT(test_passed == 1);
     FOOTER;
@@ -47,10 +47,10 @@ void check_traverse_while_traverse()
 
     auto p(batch.hook([&]() {
         ++passed;
-        batch.traverse();
+        batch.invoke();
     }));
 
-    batch.traverse();
+    batch.invoke();
 
     ASSERT(passed == 1);
     FOOTER;
@@ -65,8 +65,8 @@ void check_traverse()
         ++passed;
     }));
 
-    batch.traverse();
-    batch.traverse();
+    batch.invoke();
+    batch.invoke();
 
     ASSERT(passed == 2);
     FOOTER;

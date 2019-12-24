@@ -2,7 +2,7 @@ namespace om636 {
 namespace control {
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename... T>
-    auto BatchImpl<T...>::hook(std::function<void(T...)> callback) -> std::shared_ptr<agent_type>
+    auto BatchImpl<T...>::hook(function_type callback) -> agent_type
     {
         auto agent(std::make_shared<shared_agent<T...>>(callback));
         m_elements_add.push_back(agent);
@@ -11,15 +11,7 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename... T>
-    void BatchImpl<T...>::unhook()
-    {
-        utils::kill_all(elements());
-        utils::kill_all(m_elements_add);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename... T>
-    void BatchImpl<T...>::traverse(T... arg)
+    void BatchImpl<T...>::invoke(T... arg)
     {
         merge_added_elements();
 
@@ -28,11 +20,19 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename... T>
-    void BatchImpl<T...>::traverse_destructive(T... arg)
+    void BatchImpl<T...>::kill_invoke(T... arg)
     {
         merge_added_elements();
 
         utils::process_and_kill(elements(), arg...);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename... T>
+    void BatchImpl<T...>::kill()
+    {
+        utils::kill_all(elements());
+        utils::kill_all(m_elements_add);
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -66,7 +66,7 @@ namespace control {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
                 auto s(p.lock());
-                if (s && !s->is_dead())
+                if (s)
                     s->invoke(v...);
                 //else
                 //elements.erase(p);
@@ -80,7 +80,7 @@ namespace control {
             T copy(elements);
             for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
                 auto s(p.lock());
-                if (s && !s->is_dead())
+                if (s)
                     s->kill_invoke(v...);
             });
             elements.clear();

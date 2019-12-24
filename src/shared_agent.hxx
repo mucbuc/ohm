@@ -15,18 +15,20 @@ namespace control {
     template <typename... T>
     void shared_agent<T...>::invoke(T... args)
     {
-        ASSERT(!is_dead());
-        m_callback(args...);
+        if (!is_dead()) {
+            m_callback(args...);
+	}
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename... T>
     void shared_agent<T...>::kill_invoke(T... args)
     {
-        ASSERT(!is_dead());
-        callback_type temp(m_callback);
-        kill();
-        temp(args...);
+        if (!is_dead()) {
+            callback_type temp(m_callback);
+            kill();
+            temp(args...);
+	}
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
