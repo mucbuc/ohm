@@ -1,5 +1,4 @@
-#ifndef DYNAMO_H_OI2301KP0WE0LSLE5
-#define DYNAMO_H_OI2301KP0WE0LSLE5
+#pragma once 
 
 #include <memory>
 
@@ -26,5 +25,3 @@ namespace control {
 
 } // control
 } // om636
-
-#endif

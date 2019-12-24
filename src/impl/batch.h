@@ -1,12 +1,11 @@
-#ifndef BATCHIMPL_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
-#define BATCHIMPL_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
+#pragma once
 
 #include <algorithm>
 #include <memory>
 #include <vector>
 
-#include "interface.h"
-#include "shared_agent.h"
+#include "../interface.h"
+#include "agent.h"
 
 namespace om636 {
 namespace control {
@@ -53,6 +52,4 @@ namespace control {
 } //control
 } // om636
 
-#include "batch_impl.hxx"
-
-#endif
+#include "batch.hxx"

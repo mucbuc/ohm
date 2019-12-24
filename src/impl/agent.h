@@ -1,9 +1,8 @@
-#ifndef SHARED_AGENT_H_OWKJEKJKWKW3929293
-#define SHARED_AGENT_H_OWKJEKJKWKW3929293
+#pragma once
 
 #include <functional>
 
-#include "interface.h"
+#include "../interface.h"
 
 namespace om636 {
 namespace control {
@@ -29,6 +28,4 @@ namespace control {
 } // control
 } // om636
 
-#include "shared_agent.hxx"
-
-#endif // SHARED_AGENT_H_OWKJEKJKWKW3929293
+#include "agent.hxx"

@@ -1,3 +1,5 @@
+#pragma once
+
 namespace om636 {
 namespace control {
     template <typename ...>
