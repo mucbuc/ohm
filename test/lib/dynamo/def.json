@@ -1,9 +1,10 @@
 {
 	"sources": [
-		"src/agent.h",
-		"src/agent.hxx",
-		"src/batch.h",
-		"src/batch.hxx",
-		"src/dynamofwd.h"
+		"src/dynamofwd.h",
+		"src/interface.h",
+		"src/impl/batch.h",
+		"src/impl/batch.hxx",
+		"src/impl/agent.h",
+		"src/impl/agent.hxx"
 	]
 }
