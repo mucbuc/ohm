@@ -6,8 +6,6 @@
 #include <memory>
 #include <set>
 
-#include <lib/dynamo/src/batch.h>
-
 namespace om636 {
 namespace control {
 
@@ -16,16 +14,12 @@ namespace control {
     public:
         typedef T event_type;
         typedef std::function<void(U...)> callback_type;
-        typedef Batch<callback_type> batch_type;
-        typedef typename batch_type::listener_type listener_type;
+        typedef std::shared_ptr<callback_type> listener_type;
 
         virtual ~Emitter() = default;
 
         virtual listener_type on(event_type, callback_type) = 0;
         virtual listener_type once(event_type, callback_type) = 0;
-
-        virtual void removeListeners(event_type) = 0;
-        virtual void removeAllListeners() = 0;
 
         virtual void interupt(event_type, U...) = 0;
     };
