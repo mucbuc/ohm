@@ -2,15 +2,17 @@
 #include <iostream>
 #include <vector>
 
-#include <lib/ohm/src/quemitter.h>
 #include <tmp/src/test.h>
 
-using namespace std;
-using namespace om636;
-template <template <class, class> class T>
-void check_once_while_emit_recursive()
+#include <lib/ohm/src/emitter_impl.h>
+
+int main()
 {
-    typedef T<string, function<void()>> emitter_type;
+    using namespace std;
+    using namespace om636;
+    using namespace control;
+
+    typedef EmitterImpl<string> emitter_type;
     typedef typename emitter_type::listener_type listener_type;
 
     emitter_type emitter;
@@ -20,28 +22,11 @@ void check_once_while_emit_recursive()
 
     listeners.push_back(emitter.once("on", [&]() {
         ++counter;
-        emitter.emit("on");
+        emitter.interupt("on");
     }));
 
-    emitter.emit("on");
+    emitter.interupt("on");
 
-    ASSERT(counter == 1);
-
-    FOOTER;
-}
-
-#include <lib/ohm/src/emitter.h>
-#include <tmp/src/test.h>
-
-template <class T, class U>
-using QueuedEmitter = om636::control::Quemitter<T, U>;
-
-int main()
-{
-    using namespace std;
-
-    check_once_while_emit_recursive<om636::control::Emitter>();
-    check_once_while_emit_recursive<QueuedEmitter>();
-
+    ASSERT(counter == 1 && "check_once_while_emit_recursive");
     return 0;
 }
