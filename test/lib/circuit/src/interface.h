@@ -1,7 +1,7 @@
 #pragma once
 
 namespace om636 {
-namespace twice_size {
+namespace circuit {
 
     template <class T>
     struct Circuit {
@@ -13,6 +13,6 @@ namespace twice_size {
         virtual void wait_pop(value_type&) = 0;
     };
 
-} // twice_size
+} // circuit
 } // om636
 
