@@ -1,5 +1,4 @@
-#ifndef TWICE_SIZE_INTERFACE_H_0494LLJLKJ23
-#define TWICE_SIZE_INTERFACE_H_0494LLJLKJ23
+#pragma once
 
 namespace om636 {
 namespace twice_size {
@@ -17,4 +16,3 @@ namespace twice_size {
 } // twice_size
 } // om636
 
-#endif // TWICE_SIZE_INTERFACE_H_0494LLJLKJ23
