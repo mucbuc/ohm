@@ -17,20 +17,6 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T, template <typename> class P, typename... U>
-    void QuemitterImpl<T, P, U...>::removeListeners(event_type e)
-    {
-        m_reactor.removeListeners(e);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, template <typename> class P, typename... U>
-    void QuemitterImpl<T, P, U...>::removeAllListeners()
-    {
-        m_reactor.removeAllListeners();
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, template <typename> class P, typename... U>
     void QuemitterImpl<T, P, U...>::interupt(event_type e, U... arg)
     {
         m_reactor.interupt(e, arg...);

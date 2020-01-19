@@ -29,9 +29,6 @@ namespace control {
         listener_type on(event_type, callback_type) override;
         listener_type once(event_type, callback_type) override;
 
-        void removeListeners(event_type) override;
-        void removeAllListeners() override;
-
         void interupt(event_type, U...) override;
         void emit(event_type, U...) override;
 
