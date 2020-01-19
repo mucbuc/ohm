@@ -10,10 +10,14 @@ using namespace std;
 
 int main()
 {
-    om636::control::EmitterImpl<string> e;
+    typedef om636::control::EmitterImpl<string> emitter_type;
+    typedef typename emitter_type::listener_type listener_type;
+
+    emitter_type e;
     size_t counter(0);
 
-    auto p(e.once("e", [&]() {
+    listener_type p(e.on("e", [&]() {
+	p.reset();
         ++counter;
         e.interupt("e");
     }));

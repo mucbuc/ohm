@@ -10,16 +10,8 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T, typename... U>
-    auto EmitterImpl<T, U...>::once(event_type e, callback_type c) -> listener_type
-    {
-        return m_once[e].hook(c);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, typename... U>
     void EmitterImpl<T, U...>::interupt(event_type e, U... arg)
     {
-        m_once[e].invoke_once(arg...);
         m_repeat[e].invoke(arg...);
     }
 

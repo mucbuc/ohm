@@ -20,8 +20,6 @@ namespace control {
         using typename base_type::listener_type;
 
         listener_type on(event_type, callback_type) override;
-        listener_type once(event_type, callback_type) override;
-
         void interupt(event_type, U...) override;
 
     private:
@@ -29,7 +27,6 @@ namespace control {
         typedef std::map<event_type, batch_type> map_type;
 
         map_type m_repeat;
-        map_type m_once;
     };
 } //control
 } // om636

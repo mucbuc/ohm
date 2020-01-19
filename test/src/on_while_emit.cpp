@@ -19,7 +19,7 @@ int main()
 
     unsigned counter(0);
 
-    listeners.push_back(emitter.once("load", [&]() {
+    listeners.push_back(emitter.on("load", [&]() {
         listeners.push_back(emitter.on("on", [&]() {
             ++counter;
         }));

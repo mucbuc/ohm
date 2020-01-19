@@ -1,9 +1,0 @@
-{
-	"include":[
-		"lib/ohm/ohm.json"
-	],
-	"sources": [
-		"src/once_while_emit_recursive.cpp",
-		"src/emitter_fwd.h"
-	]
-}
