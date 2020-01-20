@@ -10,6 +10,13 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T, template <typename> class P, typename... U>
+    auto QuemitterImpl<T, P, U...>::once(event_type e, callback_type c) -> listener_type
+    {
+        return m_reactor.once(e, c);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename T, template <typename> class P, typename... U>
     void QuemitterImpl<T, P, U...>::interupt(event_type e, U... arg)
     {
         m_reactor.interupt(e, arg...);
