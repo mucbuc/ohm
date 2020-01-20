@@ -26,7 +26,6 @@ namespace control {
 
     public:
         typedef Emitter<T, U...> base_type;
-        using typename base_type::batch_type;
         using typename base_type::callback_type;
         using typename base_type::event_type;
         using typename base_type::listener_type;

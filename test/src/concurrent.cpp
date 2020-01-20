@@ -2,7 +2,6 @@
 
 #include <tmp/src/test.h>
 
-#include "emitter_fwd.h"
 #include <lib/ohm/src/quemitter_impl.h>
 
 using namespace std;
@@ -50,7 +49,7 @@ unsigned concurent_test_policy<T>::index = 0;
 
 void run_concurent_test()
 {
-    typedef om636::control::QuemitterImpl<string, concurent_test_policy> q_type;
+    typedef om636::control::QuemitterImpl<string, concurent_test_policy, unsigned> q_type;
     q_type e;
 
     unsigned counter = 0;

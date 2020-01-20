@@ -3,7 +3,6 @@
 		"lib/ohm/ohm.json"
 	],
 	"sources": [
-		"src/modify_while_traversal.cpp",
-		"src/emitter_fwd.h"
+		"src/modify_while_traversal.cpp"
 	]
 }

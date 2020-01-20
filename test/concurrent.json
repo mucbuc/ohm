@@ -4,7 +4,6 @@
 	],
 	"sources": [
 		"src/concurrent.cpp",
-		"src/emitter.h",
-		"src/emitter_fwd.h"
+		"src/emitter.h"
 	]
 }

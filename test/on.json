@@ -3,7 +3,6 @@
 		"lib/ohm/ohm.json"
 	],
 	"sources": [
-		"src/on.cpp",
-		"src/emitter_fwd.h"
+		"src/on.cpp"
 	]
 }
