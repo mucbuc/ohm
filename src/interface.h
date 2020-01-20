@@ -18,6 +18,7 @@ namespace control {
 
         virtual ~Emitter() = default;
         virtual listener_type on(event_type, callback_type) = 0;
+        virtual listener_type once(event_type, callback_type) = 0;
         virtual void interupt(event_type, U...) = 0;
     };
 
