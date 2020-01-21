@@ -1,7 +1,7 @@
 #ifndef QUEMITTER_IMPL_H_INCLUDEGUARD_QMNEOIUOIUEN3242
 #define QUEMITTER_IMPL_H_INCLUDEGUARD_QMNEOIUOIUEN3242
 
-#include <lib/twice-size/src/queue.h>
+#include <lib/circuit/src/index.h>
 
 #include "emitter_impl.h"
 #include "interface.h"
@@ -29,19 +29,16 @@ namespace control {
         listener_type on(event_type, callback_type) override;
         listener_type once(event_type, callback_type) override;
 
-        void removeListeners(event_type) override;
-        void removeAllListeners() override;
-
         void interupt(event_type, U...) override;
         void emit(event_type, U...) override;
 
     private:
         typedef P<QuemitterImpl<T, P, U...>> fbp;
         typedef std::function<void()> function_type;
-        typedef om636::queue<function_type> queue_type;
+        typedef om636::circuit::CircuitQueue<function_type> queue_type;
         typedef std::mutex mutex_type;
 
-        void push_event(function_type);
+        void push_event(function_type &&);
 
         EmitterImpl<T, U...> m_reactor;
         queue_type m_queue;

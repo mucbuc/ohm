@@ -3,7 +3,6 @@
 		"lib/ohm/ohm.json"
 	],
 	"sources": [
-		"src/dispatch_logic.cpp",
-		"src/emitter_fwd.h"
+		"src/dispatch_logic.cpp"
 	]
 }

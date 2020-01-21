@@ -4,8 +4,17 @@ namespace control {
     template <typename... T>
     auto BatchImpl<T...>::hook(function_type callback) -> agent_type
     {
-        auto agent(std::make_shared<shared_agent<T...>>(callback));
-        m_elements_add.push_back(agent);
+        auto agent(std::make_shared<function_type>(callback));
+        m_elements.push(std::make_tuple<pointer_type, bool>(agent, true));
+        return agent;
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////
+    template <typename... T>
+    auto BatchImpl<T...>::hook_once(function_type callback) -> agent_type
+    {
+        auto agent(std::make_shared<function_type>(callback));
+        m_elements.push(std::make_tuple<pointer_type, bool>(agent, false));
         return agent;
     }
 
@@ -13,26 +22,19 @@ namespace control {
     template <typename... T>
     void BatchImpl<T...>::invoke(T... arg)
     {
-        merge_added_elements();
-
-        utils::process(elements(), arg...);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename... T>
-    void BatchImpl<T...>::kill_invoke(T... arg)
-    {
-        merge_added_elements();
-
-        utils::process_and_kill(elements(), arg...);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename... T>
-    void BatchImpl<T...>::kill()
-    {
-        utils::kill_all(elements());
-        utils::kill_all(m_elements_add);
+        batch_type traverse;
+        traverse.swap(elements());
+        tuple_type agent;
+        while (traverse.check_pop(agent)) {
+            agent_type s(std::get<0>(agent).lock());
+            if (s) {
+                (*s)(arg...);
+	    }
+	    s = std::get<0>(agent).lock();
+	    if (s && std::get<1>(agent)) {
+                elements().push(std::move(agent));
+            }
+        }
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -48,56 +50,5 @@ namespace control {
     {
         return m_elements;
     }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename... T>
-    void BatchImpl<T...>::merge_added_elements()
-    {
-        elements().insert(elements().end(), m_elements_add.begin(), m_elements_add.end());
-        m_elements_add.clear();
-    }
-
-    namespace utils {
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T, typename... V>
-        void process(T& elements, V... v)
-        {
-            T copy(elements);
-            for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                auto s(p.lock());
-                if (s)
-                    s->invoke(v...);
-                //else
-                //elements.erase(p);
-            });
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T, typename... V>
-        void process_and_kill(T& elements, V... v)
-        {
-            T copy(elements);
-            for_each(copy.begin(), copy.end(), [&](typename T::value_type p) {
-                auto s(p.lock());
-                if (s)
-                    s->kill_invoke(v...);
-            });
-            elements.clear();
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////
-        template <typename T>
-        void kill_all(T& elements)
-        {
-            for_each(elements.begin(), elements.end(), [](typename T::value_type p) {
-                auto s(p.lock());
-                if (s) {
-                    s->kill();
-                }
-            });
-            elements.clear();
-        }
-    } // utils
 } // control
 } // om636

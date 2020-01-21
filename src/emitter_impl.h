@@ -6,6 +6,8 @@
 #include <set>
 
 #include "interface.h"
+#include <lib/dynamo/src/impl/batch.h> 
+
 
 #include <lib/dynamo/src/impl/batch.h>
 
@@ -15,24 +17,19 @@ namespace control {
     class EmitterImpl : Emitter<T, U...> {
     public:
         typedef T event_type;
-        typedef std::function<void(U...)> callback_type;
-        typedef BatchImpl<U...> batch_type;
-        typedef typename batch_type::listener_type listener_type;
+        typedef Emitter<event_type, U...> base_type; 
+	using typename base_type::callback_type;
+        using typename base_type::listener_type;
 
         listener_type on(event_type, callback_type) override;
         listener_type once(event_type, callback_type) override;
-
-        void removeListeners(event_type) override;
-        void removeAllListeners() override;
-
         void interupt(event_type, U...) override;
 
     private:
+        typedef BatchImpl<U...> batch_type;
         typedef std::map<event_type, batch_type> map_type;
-        void kill_all(map_type&);
 
         map_type m_repeat;
-        map_type m_once;
     };
 } //control
 } // om636

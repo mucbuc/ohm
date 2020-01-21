@@ -8,7 +8,7 @@ int main()
     auto f = [&](unsigned i, unsigned j) { sum += i * j; };
 
     om636::control::EmitterImpl<std::string, unsigned, unsigned> e;
-    auto p(e.once("e", f));
+    auto p(e.on("e", f));
     auto q(e.on("e", f));
     e.interupt("e", 7, 3);
 

@@ -4,8 +4,9 @@
 #include <memory>
 #include <vector>
 
+#include <lib/circuit/src/index.h>
+
 #include "../interface.h"
-#include "agent.h"
 
 namespace om636 {
 namespace control {
@@ -18,36 +19,21 @@ namespace control {
 
         ~BatchImpl() override = default;
         agent_type hook(function_type) override;
+        agent_type hook_once(function_type) override;
         void invoke(T...) override;
-        void kill_invoke(T...) override;
-        void kill() override;
 
-    private:
         typedef std::weak_ptr<typename agent_type::element_type> pointer_type;
-        typedef std::vector<pointer_type> batch_type;
+	typedef std::tuple<pointer_type, bool> tuple_type;
+        typedef circuit::CircuitQueue<tuple_type> batch_type;
         batch_type& elements();
         const batch_type& elements() const;
-        void merge_added_elements();
+
+    private:
+        template <typename U>
+        void invoke(U, T...);
 
         batch_type m_elements;
-        batch_type m_elements_add;
     };
-
-    namespace utils {
-
-        template <typename T, typename... V>
-        void process_and_kill(T&, V...);
-
-        template <typename T, typename... V>
-        void process(T&, V...);
-
-        template <typename T>
-        void kill_all(T&);
-
-        struct empty_base {
-            virtual ~empty_base() = default;
-        };
-    }
 
 } //control
 } // om636

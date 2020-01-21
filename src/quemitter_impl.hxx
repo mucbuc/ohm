@@ -17,20 +17,6 @@ namespace control {
 
     /////////////////////////////////////////////////////////////////////////////////////
     template <typename T, template <typename> class P, typename... U>
-    void QuemitterImpl<T, P, U...>::removeListeners(event_type e)
-    {
-        m_reactor.removeListeners(e);
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, template <typename> class P, typename... U>
-    void QuemitterImpl<T, P, U...>::removeAllListeners()
-    {
-        m_reactor.removeAllListeners();
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////
-    template <typename T, template <typename> class P, typename... U>
     void QuemitterImpl<T, P, U...>::interupt(event_type e, U... arg)
     {
         m_reactor.interupt(e, arg...);
@@ -44,21 +30,22 @@ namespace control {
             interupt(e, v...);
         });
 
-        push_event(p);
+        push_event(std::move(p));
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////
     template <class T, template <typename> class P, typename... U>
-    void QuemitterImpl<T, P, U...>::push_event(function_type f)
+    void QuemitterImpl<T, P, U...>::push_event(function_type && f)
     {
-        m_queue.push(f);
+        m_queue.push(std::move(f));
         fbp::pushed_event(*this);
 
+	function_type current;
         std::unique_lock<mutex_type> lock(m_mutex, std::defer_lock);
         while (lock.try_lock()
             && fbp::locked_mutex(*this)
-            && m_queue.try_pop(f)) {
-            f();
+            && m_queue.check_pop(current)) {
+            current();
 
             lock.unlock();
             fbp::unlocked_mutex(*this);
