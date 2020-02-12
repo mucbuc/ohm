@@ -1,6 +1,0 @@
-{
-	"test/lib": [
-		"ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo",
-		"https://github.com/mucbuc/twice-size.git"
-	]
-}
