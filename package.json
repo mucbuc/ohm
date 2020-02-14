@@ -5,7 +5,9 @@
   "scripts": {
     "test": "crimp test/tests.json -g",
     "generateDocs":"doc-tool package_header src_interface > README.md",
-    "fetch": "npx plusi install"
+    "fetch": "npx plusi install",
+    "format": "clang-format -i --style=Webkit src/*.h test/src/*.cpp"
+ 
   },
   "devDependencies": {
     "dynamo": "git+ssh://git-codecommit.us-west-1.amazonaws.com/v1/repos/dynamo"

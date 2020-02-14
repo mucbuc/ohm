@@ -8,7 +8,7 @@
 
 int main()
 {
- 
+
     using namespace std;
     using namespace om636;
     using namespace control;
@@ -34,13 +34,15 @@ int main()
     }));
     emitter.interupt(event);
     listeners.front().reset();
-    ASSERT(trap == 0)(trap);
+    ASSERT(trap == 0)
+    (trap);
 
     emitter.interupt(event);
     ASSERT(trap == 1);
 
     emitter.interupt(event);
-    ASSERT(trap == 2 && "modify_while_traversau")(trap);
+    ASSERT(trap == 2 && "modify_while_traversau")
+    (trap);
 
     return 0;
 }

@@ -38,7 +38,7 @@ namespace control {
         typedef om636::circuit::CircuitQueue<function_type> queue_type;
         typedef std::mutex mutex_type;
 
-        void push_event(function_type &&);
+        void push_event(function_type&&);
 
         EmitterImpl<T, U...> m_reactor;
         queue_type m_queue;

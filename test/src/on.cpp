@@ -14,15 +14,15 @@ int main()
     EmitterImpl<string> emitter;
 
     unsigned counter(0);
-    auto listener{ emitter.on("on", [&]() {
+    auto listener { emitter.on("on", [&]() {
         ++counter;
-    })};
+    }) };
 
     emitter.interupt("on");
     emitter.interupt("on");
     emitter.interupt("on");
     emitter.interupt("on");
 
-    ASSERT(counter == 4 && "on" );
+    ASSERT(counter == 4 && "on");
     return 0;
 }

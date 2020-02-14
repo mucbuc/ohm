@@ -17,13 +17,13 @@ int main()
     size_t counter(0);
 
     listener_type p(e.on("e", [&]() {
-	p.reset();
+        p.reset();
         ++counter;
         e.interupt("e");
     }));
 
     e.interupt("e");
 
-    ASSERT(counter == 1 && "emit while emit" );
+    ASSERT(counter == 1 && "emit while emit");
     return 0;
 }

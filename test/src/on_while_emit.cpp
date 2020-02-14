@@ -30,7 +30,7 @@ int main()
     emitter.interupt("load");
     emitter.interupt("on");
 
-    ASSERT(counter == 2 && "check_on_while_emit" );
+    ASSERT(counter == 2 && "check_on_while_emit");
 
     return 0;
 }
