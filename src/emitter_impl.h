@@ -6,8 +6,7 @@
 #include <set>
 
 #include "interface.h"
-#include <lib/dynamo/src/impl/batch.h>
-
+#include <lib/circuit/src/impl/queue.h>
 #include <lib/dynamo/src/impl/batch.h>
 
 namespace om636 {
@@ -25,7 +24,7 @@ namespace control {
         void interupt(event_type, U...) override;
 
     private:
-        typedef BatchImpl<U...> batch_type;
+        typedef BatchImpl<om636::circuit::QueuePolicy, U...> batch_type;
         typedef std::map<event_type, batch_type> map_type;
 
         map_type m_repeat;
