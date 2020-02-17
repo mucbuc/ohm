@@ -1,5 +1,4 @@
-#ifndef QUEMITTER_IMPL_H_INCLUDEGUARD_QMNEOIUOIUEN3242
-#define QUEMITTER_IMPL_H_INCLUDEGUARD_QMNEOIUOIUEN3242
+#pragma once
 
 #include <lib/circuit/src/index.h>
 
@@ -49,5 +48,3 @@ namespace control {
 } // om636
 
 #include "quemitter_impl.hxx"
-
-#endif

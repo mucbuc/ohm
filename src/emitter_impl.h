@@ -1,5 +1,4 @@
-#ifndef EMITTER_IMPL_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
-#define EMITTER_IMPL_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
+#pragma once
 
 #include <map>
 #include <memory>
@@ -33,5 +32,3 @@ namespace control {
 } // om636
 
 #include "emitter_impl.hxx"
-
-#endif
