@@ -4,8 +4,7 @@ Local message broker
 
 ## Interface
 ```
-#ifndef EMITTER_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
-#define EMITTER_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
+#pragma once
 
 #include <functional>
 #include <map>
@@ -45,8 +44,6 @@ namespace control {
 
 } //control
 } // om636
-
-#endif
 
 ```
 
