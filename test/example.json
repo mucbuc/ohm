@@ -1,0 +1,8 @@
+{
+	"include":[
+		"lib/ohm/ohm.json"
+	],
+	"sources": [
+		"src/example.cpp"
+	]
+}
