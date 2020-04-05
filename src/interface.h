@@ -37,10 +37,10 @@ namespace control {
     };
 
     template <typename T, typename... U>
-    std::shared_ptr<Emitter<T, U...>> make_Emitter();
+    std::shared_ptr<Emitter<T, U...>> make_emitter();
 
     template <typename T, typename... U>
-    std::shared_ptr<Emitter<T, U...>> make_Quemitter();
+    std::shared_ptr<Emitter<T, U...>> make_quemitter();
 
 } //control
 } // om636

@@ -8,13 +8,13 @@ namespace om636 {
 namespace control {
 
     template <typename T, typename... U>
-    std::shared_ptr<Emitter<T, U...>> make_Emitter()
+    std::shared_ptr<Emitter<T, U...>> make_emitter()
     {
         return std::make_shared<EmitterImpl<T, U...>>();
     }
 
     template <typename T, typename... U>
-    std::shared_ptr<Emitter<T, U...>> make_Quemitter()
+    std::shared_ptr<Emitter<T, U...>> make_quemitter()
     {
         return std::make_shared<QuemitterImpl<T, default_policy, U...>>();
     }

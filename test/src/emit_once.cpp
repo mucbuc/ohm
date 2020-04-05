@@ -9,7 +9,7 @@ using namespace control;
 
 int main()
 {
-    auto e = make_Emitter<string, int>();
+    auto e = make_emitter<string, int>();
 
     unsigned counter(0);
 
