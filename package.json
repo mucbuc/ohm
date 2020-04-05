@@ -4,7 +4,7 @@
   "description":"Local message broker",
   "scripts": {
     "test": "crimp test/tests.json -g",
-    "generateDocs":"doc-tool package_header src_interface > README.md",
+    "generateDocs":"doc-tool package_header src_interface test_example > README.md",
     "fetch": "npx plusi install",
     "format": "clang-format -i --style=Webkit src/*.h test/src/*.cpp"
  
