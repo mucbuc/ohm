@@ -14,7 +14,7 @@ int main()
     EmitterImpl<string> emitter;
 
     unsigned counter(0);
-    auto listener { emitter.on("on", [&]() {
+    auto listener{ emitter.on("on", [&]() {
         ++counter;
     }) };
 

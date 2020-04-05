@@ -53,7 +53,7 @@ void run_concurent_test()
     q_type e;
 
     unsigned counter = 0;
-    q_type::listener_type a { e.on("hello", [&counter](unsigned index) {
+    q_type::listener_type a{ e.on("hello", [&counter](unsigned index) {
         ASSERT(counter == index);
         ++counter;
     }) };
