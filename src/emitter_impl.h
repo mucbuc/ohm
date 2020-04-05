@@ -11,7 +11,7 @@
 namespace om636 {
 namespace control {
     template <typename T, typename... U>
-    class EmitterImpl : Emitter<T, U...> {
+    class EmitterImpl : public Emitter<T, U...> {
     public:
         typedef T event_type;
         typedef Emitter<event_type, U...> base_type;
