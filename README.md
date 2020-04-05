@@ -42,6 +42,12 @@ namespace control {
         virtual void emit(event_type, U...) = 0;
     };
 
+    template <typename T, typename... U>
+    std::shared_ptr<Emitter<T, U...>> make_Emitter();
+
+    template <typename T, typename... U>
+    std::shared_ptr<Emitter<T, U...>> make_Quemitter();
+
 } //control
 } // om636
 
