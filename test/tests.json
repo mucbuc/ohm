@@ -11,5 +11,5 @@
 	"on_while_emit.json",
 	"once_while_emit.json",
 	"once_while_emit_recursive.json",
-	"example.json"
+	"examples.json"
 	] }
