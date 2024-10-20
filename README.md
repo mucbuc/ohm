@@ -53,10 +53,10 @@ namespace control {
 
 ```
 
-##Examples
+## Examples
 
-###1
-####Source code
+### Example 1
+#### Source code
 ```
 #include <iostream>
 #include <tmp/src/test.h>
@@ -76,12 +76,12 @@ int main()
 }
 
 ```
-####Output
+#### Output
 ```
 "run 4\n"
 ```
-###2
-####Source code
+### Example 2
+#### Source code
 ```
 #include <iostream>
 #include <tmp/src/test.h>
@@ -101,7 +101,7 @@ int main()
 }
 
 ```
-####Output
+#### Output
 ```
 "run 322\n"
 ```
