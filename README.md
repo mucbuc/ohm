@@ -50,7 +50,6 @@ namespace control {
 
 } //control
 } // om636
-
 ```
 
 ## Examples
@@ -74,7 +73,6 @@ int main()
     e->interupt("run", 4);
     return 0;
 }
-
 ```
 #### Output
 ```
@@ -99,7 +97,6 @@ int main()
     e->interupt("run", 322);
     return 0;
 }
-
 ```
 #### Output
 ```
