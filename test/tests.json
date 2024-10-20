@@ -10,5 +10,6 @@
 	"modify_while_traversal.json",
 	"on_while_emit.json",
 	"once_while_emit.json",
-	"once_while_emit_recursive.json"
+	"once_while_emit_recursive.json",
+	"examples.json"
 	] }

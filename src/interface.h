@@ -1,10 +1,11 @@
-#ifndef EMITTER_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
-#define EMITTER_H__iFZqmDoIwhGaYO3df4xe5LCQXrbBvj
+#pragma once
 
 #include <functional>
 #include <map>
 #include <memory>
 #include <set>
+
+#include <lib/dynamo/src/interface.h>
 
 namespace om636 {
 namespace control {
@@ -35,7 +36,11 @@ namespace control {
         virtual void emit(event_type, U...) = 0;
     };
 
+    template <typename T, typename... U>
+    std::shared_ptr<Emitter<T, U...>> make_emitter();
+
+    template <typename T, typename... U>
+    std::shared_ptr<Emitter<T, U...>> make_quemitter();
+
 } //control
 } // om636
-
-#endif

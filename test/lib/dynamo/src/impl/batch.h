@@ -4,13 +4,14 @@
 #include <memory>
 #include <vector>
 
-#include <lib/circuit/src/index.h>
+#include <lib/circuit/src/impl/circuit_host.h>
 
 #include "../interface.h"
 
 namespace om636 {
 namespace control {
-    template <typename... T>
+
+    template <template <typename> typename P, typename... T>
     class BatchImpl : public Batch<T...> {
     public:
         typedef Batch<T...> base_type;
@@ -23,16 +24,16 @@ namespace control {
         void invoke(T...) override;
 
         typedef std::weak_ptr<typename agent_type::element_type> pointer_type;
-	typedef std::tuple<pointer_type, bool> tuple_type;
-        typedef circuit::CircuitQueue<tuple_type> batch_type;
-        batch_type& elements();
-        const batch_type& elements() const;
+        typedef std::tuple<pointer_type, bool> tuple_type;
+        typedef circuit::CircuitHost<tuple_type, P> batch_type;
+        batch_type& impl_ref();
+        const batch_type& impl_ref() const;
 
     private:
         template <typename U>
         void invoke(U, T...);
 
-        batch_type m_elements;
+        batch_type m_impl;
     };
 
 } //control
