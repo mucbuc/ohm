@@ -76,7 +76,7 @@ int main()
 ```
 #### Output
 ```
-"run 4\n"
+run 4
 ```
 ### Example 2
 #### Source code
@@ -100,5 +100,5 @@ int main()
 ```
 #### Output
 ```
-"run 322\n"
+run 322
 ```
