@@ -55,6 +55,10 @@ namespace control {
 ## Examples
 
 ### Example 1
+#### Build
+```
+g++ -std=c++17 -isystem /Users/mucbuc/work/ohm/test /Users/mucbuc/work/ohm/test/src/example.cpp -pthread -DTARGET_TEST=1  -isystem /Users/mucbuc/work/ccargs /Users/mucbuc/work/ccargs/asserter/src/archiver.cpp /Users/mucbuc/work/ccargs/asserter/src/asserter.cpp  -o tmp
+```
 #### Source code
 ```
 #include <iostream>
@@ -79,6 +83,10 @@ int main()
 run 4
 ```
 ### Example 2
+#### Build
+```
+g++ -std=c++17 -isystem /Users/mucbuc/work/ohm/test /Users/mucbuc/work/ohm/test/src/example2.cpp -pthread -DTARGET_TEST=1  -isystem /Users/mucbuc/work/ccargs /Users/mucbuc/work/ccargs/asserter/src/archiver.cpp /Users/mucbuc/work/ccargs/asserter/src/asserter.cpp  -o tmp
+```
 #### Source code
 ```
 #include <iostream>
