@@ -57,7 +57,7 @@ namespace control {
 ### Example 1
 #### Build command log
 ```
-g++ -isystem /Users/mucbuc/work/ohm/test /Users/mucbuc/work/ohm/test/src/example.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
+g++ -isystem test test/src/example.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
 ```
 #### Source code
 ```
@@ -88,7 +88,7 @@ run 4
 ### Example 2
 #### Build command log
 ```
-g++ -isystem /Users/mucbuc/work/ohm/test /Users/mucbuc/work/ohm/test/src/example2.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
+g++ -isystem test test/src/example2.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
 ```
 #### Source code
 ```
