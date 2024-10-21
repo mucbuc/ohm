@@ -4,7 +4,7 @@
   "description":"Local message broker",
   "scripts": {
     "test": "ccargs -p test/tests.json -t -c",
-    "generateDocs":"doc-tool package_header src_interface test_examples > README.md",
+    "generateDocs":"doc-tool package_header test_examples src_interface > README.md",
     "fetch": "npx plusi install",
     "format": "clang-format -i --style=Webkit src/*.h test/src/*.cpp"
  

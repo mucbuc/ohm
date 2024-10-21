@@ -2,6 +2,70 @@
 
 Local message broker
 
+## Examples
+
+### Example 1
+#### Build command
+```
+g++ -isystem test test/src/example.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
+```
+#### Source code
+```
+#include <iostream>
+#include <string>
+
+#define ASSERT(p)
+
+#include <lib/ohm/src/index.h>
+
+int main()
+{
+    using namespace om636::control;
+    using namespace std;
+
+    auto e = make_emitter<string, int>();
+    auto l = e->on("run", [](int v) {
+        cout << "run " << v << endl;
+    });
+    e->interupt("run", 4);
+    return 0;
+}
+```
+#### Output
+```
+run 4
+```
+### Example 2
+#### Build command
+```
+g++ -isystem test test/src/example2.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
+```
+#### Source code
+```
+#include <iostream>
+#include <string>
+
+#define ASSERT(p)
+
+#include <lib/ohm/src/index.h>
+
+int main()
+{
+    using namespace om636::control;
+    using namespace std;
+
+    auto e = make_emitter<string, int>();
+    auto l = e->on("run", [](int v) {
+        cout << "run " << v << endl;
+    });
+    e->interupt("run", 322);
+    return 0;
+}
+```
+#### Output
+```
+run 322
+```
 ## Interface
 ```
 #pragma once
@@ -52,67 +116,3 @@ namespace control {
 } // om636
 ```
 
-## Examples
-
-### Example 1
-#### Build command log
-```
-g++ -isystem test test/src/example.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
-```
-#### Source code
-```
-#include <iostream>
-#include <string>
-
-#define ASSERT(p)
-
-#include <lib/ohm/src/index.h>
-
-int main()
-{
-    using namespace om636::control;
-    using namespace std;
-
-    auto e = make_emitter<string, int>();
-    auto l = e->on("run", [](int v) {
-        cout << "run " << v << endl;
-    });
-    e->interupt("run", 4);
-    return 0;
-}
-```
-#### Output
-```
-run 4
-```
-### Example 2
-#### Build command log
-```
-g++ -isystem test test/src/example2.cpp -pthread -DTARGET_TEST=1 -std=c++17 -o tmp
-```
-#### Source code
-```
-#include <iostream>
-#include <string>
-
-#define ASSERT(p)
-
-#include <lib/ohm/src/index.h>
-
-int main()
-{
-    using namespace om636::control;
-    using namespace std;
-
-    auto e = make_emitter<string, int>();
-    auto l = e->on("run", [](int v) {
-        cout << "run " << v << endl;
-    });
-    e->interupt("run", 322);
-    return 0;
-}
-```
-#### Output
-```
-run 322
-```
