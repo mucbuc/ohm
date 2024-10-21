@@ -1,5 +1,8 @@
 #include <iostream>
-#include <tmp/src/test.h>
+#include <string>
+
+#define ASSERT(p)
+
 #include <lib/ohm/src/index.h>
 
 int main()

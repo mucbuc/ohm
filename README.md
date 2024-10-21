@@ -62,7 +62,10 @@ g++ -isystem /Users/mucbuc/work/ohm/test /Users/mucbuc/work/ohm/test/src/example
 #### Source code
 ```
 #include <iostream>
-#include <tmp/src/test.h>
+#include <string>
+
+#define ASSERT(p)
+
 #include <lib/ohm/src/index.h>
 
 int main()
@@ -90,7 +93,10 @@ g++ -isystem /Users/mucbuc/work/ohm/test /Users/mucbuc/work/ohm/test/src/example
 #### Source code
 ```
 #include <iostream>
-#include <tmp/src/test.h>
+#include <string>
+
+#define ASSERT(p)
+
 #include <lib/ohm/src/index.h>
 
 int main()
