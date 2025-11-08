@@ -1,8 +1,0 @@
-{
-	"include":[
-		"lib/ohm/ohm.json"
-	],
-	"sources": [
-		"src/modify_while_traversal.cpp"
-	]
-}

@@ -1,9 +1,0 @@
-{
-	"include":[
-		"lib/ohm/ohm.json"
-	],
-	"sources": [
-		"src/concurrent.cpp",
-		"src/emitter.h"
-	]
-}

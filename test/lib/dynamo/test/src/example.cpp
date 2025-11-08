@@ -1,13 +1,12 @@
-#include <tmp/src/test.h>
-
-#include <lib/dynamo/src/factory.h>
-#include <lib/dynamo/src/interface.h>
+#include <lib/asserter/src/asserter.hpp>
+#include <lib/dynamo/src/impl/batch.hpp>
+#include <lib/dynamo/src/interface.hpp>
 
 int main()
 {
-    auto b = om636::control::make_stack<int>();
+    auto b = om636::control::make_queue<int>();
 
-    int sum { 0 };
+    int sum{ 0 };
 
     auto q = b->hook([&](int i) { sum += i; });
     auto p = b->hook([&](int i) { sum *= i; });
