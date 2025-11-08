@@ -1,5 +1,7 @@
 # ohm
 
+![Test](https://github.com/mucbuc/ohm/workflows/Test/badge.svg)
+
 Local message broker
 
 ## Examples
