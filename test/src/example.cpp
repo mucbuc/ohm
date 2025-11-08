@@ -3,7 +3,7 @@
 
 #define ASSERT(p)
 
-#include <lib/ohm/src/index.h>
+#include <lib/ohm/src/index.hpp>
 
 int main()
 {
