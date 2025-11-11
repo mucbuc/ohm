@@ -1,0 +1,8 @@
+{
+	"sources": [
+		"src/dynamofwd.h",
+		"src/interface.h",
+		"src/impl/batch.h",
+		"src/impl/batch.hxx"
+	]
+}
