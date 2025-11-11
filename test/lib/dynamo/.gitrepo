@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/mucbuc/dynamo.git
+	branch = master
+	commit = 8722eddc56f52e5c0aa1365d0eb21662d64081b0
+	parent = 9dceb60263520d85e73b0a300347524820d78b0e
+	method = merge
+	cmdver = 0.4.9

@@ -40,7 +40,7 @@ namespace control {
 
 ## Example 
 ```
-#include <lib/asserter/src/test.hpp>
+#include <tmp/src/test.h>
 
 #include <lib/dynamo/src/impl/batch.h>
 #include <lib/dynamo/src/interface.h>
