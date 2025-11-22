@@ -2,9 +2,9 @@
 #include <iostream>
 #include <vector>
 
-#include <lib/asserter/src/test.hpp>
+#include <asserter/src/test.hpp>
 
-#include <lib/ohm/src/emitter_impl.hpp>
+#include <ohm/src/emitter_impl.hpp>
 
 void test_on_while_emit()
 {

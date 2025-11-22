@@ -5,7 +5,7 @@
 #include <memory>
 #include <set>
 
-#include <lib/dynamo/src/interface.hpp>
+#include <dynamo/src/interface.hpp>
 
 namespace om636 {
 namespace control {

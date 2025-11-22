@@ -1,7 +1,7 @@
-#include <lib/asserter/src/test.hpp>
+#include <asserter/src/test.hpp>
 
 #include <iostream>
-#include <lib/ohm/src/index.hpp>
+#include <ohm/src/index.hpp>
 
 using namespace std;
 using namespace om636;

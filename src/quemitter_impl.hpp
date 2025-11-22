@@ -1,6 +1,6 @@
 #pragma once
 
-#include <lib/circuit/src/index.hpp>
+#include <circuit/src/index.hpp>
 
 #include "emitter_impl.hpp"
 #include "interface.hpp"

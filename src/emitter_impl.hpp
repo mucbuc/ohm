@@ -5,8 +5,8 @@
 #include <set>
 
 #include "interface.hpp"
-#include <lib/circuit/src/impl/queue.hpp>
-#include <lib/dynamo/src/impl/batch.hpp>
+#include <circuit/src/impl/queue.hpp>
+#include <dynamo/src/impl/batch.hpp>
 
 namespace om636 {
 namespace control {

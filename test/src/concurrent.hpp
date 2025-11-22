@@ -1,8 +1,8 @@
 #include <string>
 
-#include <lib/asserter/src/test.hpp>
+#include <asserter/src/test.hpp>
 
-#include <lib/ohm/src/quemitter_impl.hpp>
+#include <ohm/src/quemitter_impl.hpp>
 
 using namespace std;
 
